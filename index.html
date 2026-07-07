@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작</title>
+  <meta name="description" content="스튜디오78 - 예능 프로그램과 AI 영상 제작. 군더더기 없는 깔끔한 제작, 예산에 맞춘 합리적 비용. 방송국과 넷플릭스가 신뢰하는 제작 파트너." />
+  <style>
+    :root {
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --ink: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --bg: #ffffff;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(17, 24, 39, 0.06);
+      --shadow-hover: 0 12px 40px rgba(37, 99, 235, 0.14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+        "맑은 고딕", "Apple SD Gothic Neo", Roboto, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== Header ===== */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--muted); font-weight: 500; font-size: 15px; transition: color .18s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--accent); color: #fff !important; padding: 10px 20px;
+      border-radius: 999px; font-weight: 600; transition: background .18s, transform .18s;
+    }
+    .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 96px 0 88px;
+      background:
+        radial-gradient(1200px 500px at 80% -10%, var(--accent-soft), transparent 70%);
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-soft); color: var(--accent-dark);
+      font-weight: 600; font-size: 14px; padding: 7px 16px; border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .badge::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    }
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 56px); line-height: 1.15; letter-spacing: -0.03em;
+      font-weight: 800; margin-bottom: 22px;
+    }
+    .hero h1 .hl { color: var(--accent); }
+    .hero p.lead {
+      font-size: clamp(17px, 2.4vw, 20px); color: var(--muted); max-width: 640px;
+      margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px;
+      padding: 14px 28px; border-radius: 999px; transition: transform .18s, background .18s, box-shadow .18s;
+      border: 1px solid transparent; cursor: pointer;
+    }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-clients {
+      margin-top: 56px; display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center;
+      color: var(--muted); font-size: 14px;
+    }
+    .hero-clients strong { color: var(--ink); font-weight: 700; }
+
+    /* ===== Section base ===== */
+    section.block { padding: 84px 0; border-top: 1px solid var(--line); }
+    .sec-head { max-width: 640px; margin-bottom: 48px; }
+    .sec-tag { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .sec-head h2 { font-size: clamp(26px, 4vw, 38px); letter-spacing: -0.02em; margin: 10px 0 14px; font-weight: 800; }
+    .sec-head p { color: var(--muted); font-size: 17px; }
+
+    /* ===== Strengths ===== */
+    .strengths { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .strength {
+      background: var(--accent-soft); border-radius: var(--radius); padding: 28px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .strength .ic {
+      flex: 0 0 44px; width: 44px; height: 44px; border-radius: 12px; background: var(--accent);
+      color: #fff; display: grid; place-items: center; font-size: 22px; font-weight: 700;
+    }
+    .strength h3 { font-size: 18px; margin-bottom: 6px; }
+    .strength p { color: var(--muted); font-size: 15px; }
+
+    /* ===== Services ===== */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card {
+      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 32px 28px; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: #dbeafe; }
+    .card .emoji { font-size: 30px; margin-bottom: 18px; display: block; }
+    .card h3 { font-size: 20px; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .card p { color: var(--muted); font-size: 15px; }
+    .card ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .card li { font-size: 14px; color: var(--ink); display: flex; gap: 8px; align-items: center; }
+    .card li::before { content: "✓"; color: var(--accent); font-weight: 800; }
+
+    /* ===== Work ===== */
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .work {
+      border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line);
+      background: #fff; transition: transform .2s, box-shadow .2s;
+    }
+    .work:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+    .work .thumb {
+      height: 150px; display: grid; place-items: center; color: #fff; font-size: 40px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+    }
+    .work:nth-child(2) .thumb { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .work:nth-child(3) .thumb { background: linear-gradient(135deg, #1e40af, #0ea5e9); }
+    .work .meta { padding: 20px 22px; }
+    .work .ch { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: 0.03em; }
+    .work h3 { font-size: 18px; margin-top: 4px; }
+    .work p { color: var(--muted); font-size: 14px; margin-top: 6px; }
+    .work .go {
+      display: inline-flex; align-items: center; gap: 5px; margin-top: 14px;
+      color: var(--accent); font-weight: 600; font-size: 14px;
+    }
+    .work:hover .go { text-decoration: underline; }
+
+    /* ===== Contact ===== */
+    .contact-box {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #fff; border-radius: 24px; padding: 56px 44px; text-align: center;
+    }
+    .contact-box h2 { font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.02em; margin-bottom: 14px; }
+    .contact-box p { color: #dbeafe; font-size: 17px; max-width: 520px; margin: 0 auto 32px; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    .btn-white { background: #fff; color: var(--accent-dark); }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+    .btn-outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
+    .btn-outline-white:hover { border-color: #fff; transform: translateY(-2px); }
+
+    /* ===== Footer ===== */
+    footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+    .foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
+    .foot a:hover { color: var(--accent); }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 860px) {
+      .cards, .work-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+    @media (max-width: 620px) {
+      .hero { padding: 64px 0 56px; }
+      section.block { padding: 60px 0; }
+      .strengths, .cards, .work-grid { grid-template-columns: 1fr; }
+      .contact-box { padding: 40px 24px; }
+      .btn { width: 100%; justify-content: center; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <a href="#top" class="logo">스튜디오<span>78</span></a>
+      <nav class="nav-links">
+        <a href="#services">서비스</a>
+        <a href="#work">작업 사례</a>
+        <a href="#contact">문의</a>
+        <a href="#contact" class="nav-cta">프로젝트 문의</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <span class="badge">방송국 · 넷플릭스가 신뢰하는 제작 파트너</span>
+        <h1>
+          기획부터 완성까지,<br />
+          <span class="hl">깔끔한 영상</span>을 합리적인 비용으로.
+        </h1>
+        <p class="lead">
+          안녕하세요, 스튜디오78 대표 <strong>이한성</strong>입니다.
+          예능 프로그램 제작과 AI 영상 제작, 그리고 AI 영상 제작 플랫폼까지 —
+          군더더기 없이 깔끔한 결과물을 예산에 맞춰 만들어 드립니다.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">프로젝트 문의하기 →</a>
+          <a href="#work" class="btn btn-ghost">작업 사례 보기</a>
+        </div>
+        <div class="hero-clients">
+          <span>함께한 채널·플랫폼</span>
+          <strong>SBS</strong><strong>JTBC</strong><strong>TV조선</strong><strong>Netflix</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strengths -->
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-tag">Why 스튜디오78</span>
+          <h2>왜 스튜디오78과 함께할까요?</h2>
+          <p>제작사의 경험과 AI 기술을 함께 활용해, 더 빠르고 더 합리적으로 완성합니다.</p>
+        </div>
+        <div class="strengths">
+          <div class="strength">
+            <div class="ic">✦</div>
+            <div>
+              <h3>군더더기 없는 깔끔한 제작</h3>
+              <p>핵심만 담은 완성도 높은 프로그램. 방송 현장에서 검증된 제작 노하우로 시청자에게 바로 통하는 결과물을 만듭니다.</p>
+            </div>
+          </div>
+          <div class="strength">
+            <div class="ic">₩</div>
+            <div>
+              <h3>예산에 맞춘 합리적 비용</h3>
+              <p>정해진 예산 안에서 최선의 퀄리티를 설계합니다. 불필요한 비용 없이, 필요한 곳에 집중하는 투명한 견적을 드립니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="block" id="services">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-tag">Services</span>
+          <h2>제공하는 서비스</h2>
+          <p>방송 프로그램 제작과 AI 영상 제작, 두 축으로 프로젝트를 완성합니다.</p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <span class="emoji">🎬</span>
+            <h3>방송 프로그램 제작</h3>
+            <p>예능·교양 프로그램의 기획부터 촬영, 편집까지 전 과정을 책임집니다.</p>
+            <ul>
+              <li>예능 프로그램 기획·제작</li>
+              <li>방송국·플랫폼 납품 규격 대응</li>
+              <li>기획 · 촬영 · 편집 원스톱</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="emoji">🤖</span>
+            <h3>AI 영상 제작</h3>
+            <p>AI 도구를 활용해 빠르고 효율적으로 고품질 영상을 제작합니다.</p>
+            <ul>
+              <li>AI 기반 영상 콘텐츠 제작</li>
+              <li>홍보·브랜드 영상</li>
+              <li>빠른 제작 주기, 합리적 비용</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="emoji">🛠️</span>
+            <h3>AI 영상 제작 플랫폼</h3>
+            <p>영상 제작을 더 쉽게 만드는 AI 플랫폼을 직접 기획·제작합니다.</p>
+            <ul>
+              <li>AI 영상 제작 워크플로우 설계</li>
+              <li>제작 자동화 솔루션</li>
+              <li>플랫폼 기획 · 개발</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="block" id="work">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-tag">Selected Work</span>
+          <h2>대표 작업 사례</h2>
+          <p>주요 방송사와 함께 제작한 프로그램들입니다.</p>
+        </div>
+        <div class="work-grid">
+          <a class="work" href="https://programs.sbs.co.kr/life/eatout/about/58369" target="_blank" rel="noopener">
+            <div class="thumb">🍽️</div>
+            <div class="meta">
+              <span class="ch">SBS미디어</span>
+              <h3>외식하는 날</h3>
+              <p>SBS미디어와 함께 제작한 예능 프로그램.</p>
+              <span class="go">공식 페이지 보기 →</span>
+            </div>
+          </a>
+          <a class="work" href="https://search.naver.com/search.naver?query=JTBC+오늘부터+파티시에" target="_blank" rel="noopener">
+            <div class="thumb">🧁</div>
+            <div class="meta">
+              <span class="ch">JTBC</span>
+              <h3>오늘부터 파티시에</h3>
+              <p>JTBC와 함께 제작한 예능 프로그램.</p>
+              <span class="go">프로그램 정보 보기 →</span>
+            </div>
+          </a>
+          <a class="work" href="https://tv.apple.com/kr/show/밥친구/umc.cmc.3eh9x6h6ogjbf530ztjo5r9eg" target="_blank" rel="noopener">
+            <div class="thumb">🍚</div>
+            <div class="meta">
+              <span class="ch">TV조선</span>
+              <h3>밥친구</h3>
+              <p>TV조선과 함께 제작한 예능 프로그램.</p>
+              <span class="go">공식 페이지 보기 →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="block" id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <h2>프로젝트를 함께 만들어 볼까요?</h2>
+          <p>예능 프로그램이든 AI 영상이든, 예산과 목표를 알려주시면 가장 합리적인 방법을 제안해 드립니다.</p>
+          <div class="contact-actions">
+            <a href="mailto:hansungyi@naver.com" class="btn btn-white">✉️ 이메일로 문의하기</a>
+            <a href="https://instagram.com/hansunglee2025" target="_blank" rel="noopener" class="btn btn-outline-white">📷 @hansunglee2025</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap foot">
+      <div>© 2026 스튜디오78 · 이한성 대표</div>
+      <div>
+        <a href="mailto:hansungyi@naver.com">hansungyi@naver.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://instagram.com/hansunglee2025" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
