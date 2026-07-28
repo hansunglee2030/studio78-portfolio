@@ -3,8 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
   <title>스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작</title>
-  <meta name="description" content="스튜디오78 - 예능 프로그램과 AI 영상 제작. 군더더기 없는 깔끔한 제작, 예산에 맞춘 합리적 비용. 방송국과 넷플릭스가 신뢰하는 제작 파트너." />
+  <meta name="description" content="스튜디오78 이한성 PD - 예능 프로그램과 AI 영상 제작. KCA 2026 선정작 'AI 미식실록(The Gourmet Chronicles)' 등, 방송국과 넷플릭스가 신뢰하는 제작 파트너." />
+  <meta name="author" content="이한성 (스튜디오78)" />
+
+  <!-- Canonical & Social (⚠️ 배포 URL 확정 시 studio78-portfolio.vercel.app 부분을 실제 도메인으로 교체하세요) -->
+  <link rel="canonical" href="https://studio78-portfolio.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="스튜디오78" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:url" content="https://studio78-portfolio.vercel.app/" />
+  <meta property="og:title" content="스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작" />
+  <meta property="og:description" content="예능 프로그램과 AI 영상 제작. 군더더기 없는 깔끔한 제작, 예산에 맞춘 합리적 비용." />
+  <meta property="og:image" content="https://studio78-portfolio.vercel.app/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작" />
+  <meta name="twitter:description" content="예능 프로그램과 AI 영상 제작. 군더더기 없는 깔끔한 제작, 예산에 맞춘 합리적 비용." />
+  <meta name="twitter:image" content="https://studio78-portfolio.vercel.app/og.png" />
+
+  <!-- Theme color (라이트/다크) -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)" />
+
+  <!-- Favicon (외부 파일 없이 인라인 SVG) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='50%25' y='54%25' font-family='Arial,sans-serif' font-size='30' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3E78%3C/text%3E%3C/svg%3E" />
+
+  <!-- 구조화 데이터 (검색엔진용) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "스튜디오78",
+    "description": "예능 프로그램 제작과 AI 영상 제작, AI 영상 제작 플랫폼 기획.",
+    "url": "https://studio78-portfolio.vercel.app/",
+    "email": "hansungyi@naver.com",
+    "areaServed": "KR",
+    "founder": { "@type": "Person", "name": "이한성", "jobTitle": "대표" },
+    "sameAs": [
+      "https://instagram.com/hansunglee2025",
+      "https://github.com/hansunglee2030/studio78-portfolio"
+    ],
+    "knowsAbout": ["예능 프로그램 제작", "AI 영상 제작", "AI 영상 제작 플랫폼", "AI 음식 복원 콘텐츠"],
+    "award": "KCA 2026 해외진출형 방송콘텐츠 기획개발 지원사업 선정 (미식실록)"
+  }
+  </script>
+
+  <!-- FOUC 방지 + 저장된 테마 즉시 적용 -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var t = localStorage.getItem('s78-theme');
+        if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
   <style>
     :root {
       --accent: #2563eb;
@@ -14,9 +70,42 @@
       --muted: #6b7280;
       --line: #e5e7eb;
       --bg: #ffffff;
+      --card-bg: #ffffff;
+      --header-bg: rgba(255, 255, 255, 0.85);
       --radius: 16px;
       --shadow: 0 4px 24px rgba(17, 24, 39, 0.06);
       --shadow-hover: 0 12px 40px rgba(37, 99, 235, 0.14);
+    }
+
+    /* 다크 테마 변수 (시스템 다크 — 단, 사용자가 라이트로 강제하지 않은 경우) */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --accent: #3b82f6;
+        --accent-dark: #60a5fa;
+        --accent-soft: #172554;
+        --ink: #f1f5f9;
+        --muted: #94a3b8;
+        --line: #1f2937;
+        --bg: #0b1120;
+        --card-bg: #111827;
+        --header-bg: rgba(11, 17, 32, 0.85);
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        --shadow-hover: 0 12px 40px rgba(59, 130, 246, 0.25);
+      }
+    }
+    /* 사용자가 수동으로 다크 선택 시 항상 적용 */
+    :root[data-theme="dark"] {
+      --accent: #3b82f6;
+      --accent-dark: #60a5fa;
+      --accent-soft: #172554;
+      --ink: #f1f5f9;
+      --muted: #94a3b8;
+      --line: #1f2937;
+      --bg: #0b1120;
+      --card-bg: #111827;
+      --header-bg: rgba(11, 17, 32, 0.85);
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      --shadow-hover: 0 12px 40px rgba(59, 130, 246, 0.25);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,23 +119,35 @@
       background: var(--bg);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      transition: background .3s ease, color .3s ease;
     }
 
     .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
     a { color: inherit; text-decoration: none; }
 
+    /* 키보드 포커스 접근성 */
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+    /* 본문 바로가기 (스크린리더/키보드) */
+    .skip {
+      position: absolute; left: 12px; top: -60px; z-index: 100;
+      background: var(--accent); color: #fff; padding: 10px 18px; border-radius: 8px;
+      font-weight: 600; transition: top .2s;
+    }
+    .skip:focus { top: 12px; }
+
     /* ===== Header ===== */
     header {
       position: sticky; top: 0; z-index: 50;
-      background: rgba(255, 255, 255, 0.85);
+      background: var(--header-bg);
       backdrop-filter: saturate(180%) blur(12px);
       border-bottom: 1px solid var(--line);
     }
     .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .logo { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
     .logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
     .nav-links a { color: var(--muted); font-weight: 500; font-size: 15px; transition: color .18s; }
     .nav-links a:hover { color: var(--ink); }
     .nav-cta {
@@ -54,6 +155,21 @@
       border-radius: 999px; font-weight: 600; transition: background .18s, transform .18s;
     }
     .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    /* 테마 토글 버튼 */
+    .theme-toggle {
+      display: grid; place-items: center; width: 40px; height: 40px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--card-bg); color: var(--ink);
+      cursor: pointer; font-size: 18px; line-height: 1; transition: border-color .18s, transform .18s;
+    }
+    .theme-toggle:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .theme-toggle .sun { display: none; }
+    :root[data-theme="dark"] .theme-toggle .sun { display: block; }
+    :root[data-theme="dark"] .theme-toggle .moon { display: none; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .theme-toggle .sun { display: block; }
+      :root:not([data-theme="light"]) .theme-toggle .moon { display: none; }
+    }
 
     /* ===== Hero ===== */
     .hero {
@@ -87,7 +203,7 @@
     }
     .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
     .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-    .btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+    .btn-ghost { background: var(--card-bg); color: var(--ink); border-color: var(--line); }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
     .hero-clients {
@@ -119,10 +235,10 @@
     /* ===== Services ===== */
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .card {
-      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--card-bg); border: 1px solid var(--line); border-radius: var(--radius);
       padding: 32px 28px; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s, border-color .2s;
     }
-    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: #dbeafe; }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
     .card .emoji { font-size: 30px; margin-bottom: 18px; display: block; }
     .card h3 { font-size: 20px; margin-bottom: 10px; letter-spacing: -0.01em; }
     .card p { color: var(--muted); font-size: 15px; }
@@ -130,11 +246,49 @@
     .card li { font-size: 14px; color: var(--ink); display: flex; gap: 8px; align-items: center; }
     .card li::before { content: "✓"; color: var(--accent); font-weight: 800; }
 
+    /* ===== Process (진행 방식) ===== */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: step; }
+    .step {
+      background: var(--card-bg); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 28px 24px; position: relative;
+    }
+    .step::before {
+      counter-increment: step; content: counter(step, decimal-leading-zero);
+      color: var(--accent); font-weight: 800; font-size: 15px; letter-spacing: 0.04em;
+    }
+    .step h3 { font-size: 17px; margin: 10px 0 8px; }
+    .step p { color: var(--muted); font-size: 14px; }
+
+    /* ===== Spotlight (선정 프로젝트) ===== */
+    .spotlight {
+      border: 1px solid var(--line); border-radius: 24px;
+      background: linear-gradient(135deg, var(--accent-soft), var(--card-bg));
+      padding: 40px; display: grid; grid-template-columns: 1.25fr 0.9fr; gap: 34px; align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .spotlight .sp-badge {
+      display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff;
+      font-weight: 700; font-size: 13px; padding: 8px 15px; border-radius: 999px; margin-bottom: 18px;
+      line-height: 1.4;
+    }
+    .spotlight h2 { font-size: clamp(26px, 4vw, 40px); letter-spacing: -0.02em; font-weight: 800; margin-bottom: 6px; }
+    .spotlight .sp-sub { color: var(--accent); font-weight: 700; font-size: 15px; margin-bottom: 16px; }
+    .spotlight p.sp-desc { color: var(--muted); font-size: 16px; margin-bottom: 22px; }
+    .sp-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .sp-chips span {
+      background: var(--card-bg); border: 1px solid var(--line); color: var(--ink);
+      font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 999px;
+    }
+    .sp-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .sp-stat { background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px; }
+    .sp-stat b { display: block; font-size: 21px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; }
+    .sp-stat small { color: var(--muted); font-size: 13px; }
+
     /* ===== Work ===== */
     .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .work {
       border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line);
-      background: #fff; transition: transform .2s, box-shadow .2s;
+      background: var(--card-bg); transition: transform .2s, box-shadow .2s;
     }
     .work:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
     .work .thumb {
@@ -171,30 +325,50 @@
     .foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
     .foot a:hover { color: var(--accent); }
 
+    /* ===== Scroll reveal (JS 활성 시에만) ===== */
+    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .js .reveal.in { opacity: 1; transform: none; }
+
     /* ===== Responsive ===== */
     @media (max-width: 860px) {
       .cards, .work-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .spotlight { grid-template-columns: 1fr; padding: 32px 26px; }
       .nav-links a:not(.nav-cta) { display: none; }
     }
     @media (max-width: 620px) {
       .hero { padding: 64px 0 56px; }
       section.block { padding: 60px 0; }
-      .strengths, .cards, .work-grid { grid-template-columns: 1fr; }
+      .strengths, .cards, .work-grid, .steps { grid-template-columns: 1fr; }
       .contact-box { padding: 40px 24px; }
       .btn { width: 100%; justify-content: center; }
       .hero-actions { flex-direction: column; align-items: stretch; }
     }
+
+    /* ===== 모션 최소화 선호 존중 ===== */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
+  <a href="#top" class="skip">본문 바로가기</a>
+
   <!-- Header -->
   <header>
     <div class="wrap nav">
       <a href="#top" class="logo">스튜디오<span>78</span></a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a href="#featured">미식실록</a>
         <a href="#services">서비스</a>
+        <a href="#process">진행 방식</a>
         <a href="#work">작업 사례</a>
         <a href="#contact">문의</a>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="라이트/다크 테마 전환">
+          <span class="moon" aria-hidden="true">🌙</span>
+          <span class="sun" aria-hidden="true">☀️</span>
+        </button>
         <a href="#contact" class="nav-cta">프로젝트 문의</a>
       </nav>
     </div>
@@ -225,24 +399,56 @@
       </div>
     </section>
 
+    <!-- Featured: 미식실록 -->
+    <section class="block" id="featured">
+      <div class="wrap">
+        <div class="spotlight reveal">
+          <div>
+            <span class="sp-badge">🏆 KCA 2026 해외진출형 방송콘텐츠 기획개발 지원사업 선정</span>
+            <h2>미식실록 — 다시 쓰는 맛</h2>
+            <div class="sp-sub">The Gourmet Chronicles: Rewriting Flavor · AI 한국 음식 복원 쇼</div>
+            <p class="sp-desc">
+              500년 전 사라진 레시피를 AI로 복원하고, 인간 셰프와 AI 로봇이 펼치는
+              하이엔드 미식 배틀. 고문헌 속 모호한 기록을 정밀한 데이터 레시피로 되살려,
+              K-푸드의 '왜'에 답하는 글로벌 지향 시네마틱 포맷입니다.
+              <br />(부산콘텐츠마켓 BCM 2026 피칭작)
+            </p>
+            <div class="sp-chips">
+              <span>AI 에듀테인먼트</span>
+              <span>45분 × 10부작</span>
+              <span>Google Gemini + Upstage</span>
+              <span>글로벌 OTT 지향</span>
+              <span>2027 공개 목표</span>
+            </div>
+          </div>
+          <div class="sp-stats">
+            <div class="sp-stat"><b>10부작</b><small>회당 45분 시리즈</small></div>
+            <div class="sp-stat"><b>500년</b><small>사라진 레시피 복원</small></div>
+            <div class="sp-stat"><b>AI × 셰프</b><small>인간 vs AI 로봇 배틀</small></div>
+            <div class="sp-stat"><b>K-Food</b><small>넷플릭스·디즈니+ 지향</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Strengths -->
     <section class="block">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head reveal">
           <span class="sec-tag">Why 스튜디오78</span>
           <h2>왜 스튜디오78과 함께할까요?</h2>
           <p>제작사의 경험과 AI 기술을 함께 활용해, 더 빠르고 더 합리적으로 완성합니다.</p>
         </div>
         <div class="strengths">
-          <div class="strength">
-            <div class="ic">✦</div>
+          <div class="strength reveal">
+            <div class="ic" aria-hidden="true">✦</div>
             <div>
               <h3>군더더기 없는 깔끔한 제작</h3>
               <p>핵심만 담은 완성도 높은 프로그램. 방송 현장에서 검증된 제작 노하우로 시청자에게 바로 통하는 결과물을 만듭니다.</p>
             </div>
           </div>
-          <div class="strength">
-            <div class="ic">₩</div>
+          <div class="strength reveal">
+            <div class="ic" aria-hidden="true">₩</div>
             <div>
               <h3>예산에 맞춘 합리적 비용</h3>
               <p>정해진 예산 안에서 최선의 퀄리티를 설계합니다. 불필요한 비용 없이, 필요한 곳에 집중하는 투명한 견적을 드립니다.</p>
@@ -255,14 +461,14 @@
     <!-- Services -->
     <section class="block" id="services">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head reveal">
           <span class="sec-tag">Services</span>
           <h2>제공하는 서비스</h2>
           <p>방송 프로그램 제작과 AI 영상 제작, 두 축으로 프로젝트를 완성합니다.</p>
         </div>
         <div class="cards">
-          <div class="card">
-            <span class="emoji">🎬</span>
+          <div class="card reveal">
+            <span class="emoji" aria-hidden="true">🎬</span>
             <h3>방송 프로그램 제작</h3>
             <p>예능·교양 프로그램의 기획부터 촬영, 편집까지 전 과정을 책임집니다.</p>
             <ul>
@@ -271,8 +477,8 @@
               <li>기획 · 촬영 · 편집 원스톱</li>
             </ul>
           </div>
-          <div class="card">
-            <span class="emoji">🤖</span>
+          <div class="card reveal">
+            <span class="emoji" aria-hidden="true">🤖</span>
             <h3>AI 영상 제작</h3>
             <p>AI 도구를 활용해 빠르고 효율적으로 고품질 영상을 제작합니다.</p>
             <ul>
@@ -281,8 +487,8 @@
               <li>빠른 제작 주기, 합리적 비용</li>
             </ul>
           </div>
-          <div class="card">
-            <span class="emoji">🛠️</span>
+          <div class="card reveal">
+            <span class="emoji" aria-hidden="true">🛠️</span>
             <h3>AI 영상 제작 플랫폼</h3>
             <p>영상 제작을 더 쉽게 만드는 AI 플랫폼을 직접 기획·제작합니다.</p>
             <ul>
@@ -295,17 +501,46 @@
       </div>
     </section>
 
+    <!-- Process (진행 방식) -->
+    <section class="block" id="process">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="sec-tag">Process</span>
+          <h2>이렇게 진행합니다</h2>
+          <p>문의부터 납품까지, 단계마다 투명하게 소통하며 진행합니다.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <h3>문의 · 상담</h3>
+            <p>목표와 예산, 일정을 듣고 프로젝트 방향을 함께 잡습니다.</p>
+          </div>
+          <div class="step reveal">
+            <h3>기획 · 견적</h3>
+            <p>콘셉트와 진행 일정, 투명한 견적을 정리해 제안드립니다.</p>
+          </div>
+          <div class="step reveal">
+            <h3>제작</h3>
+            <p>촬영·편집 또는 AI 제작으로 결과물을 완성해 나갑니다.</p>
+          </div>
+          <div class="step reveal">
+            <h3>납품 · 피드백</h3>
+            <p>납품 규격에 맞춰 전달하고, 수정 요청을 반영합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Work -->
     <section class="block" id="work">
       <div class="wrap">
-        <div class="sec-head">
+        <div class="sec-head reveal">
           <span class="sec-tag">Selected Work</span>
           <h2>대표 작업 사례</h2>
           <p>주요 방송사와 함께 제작한 프로그램들입니다.</p>
         </div>
         <div class="work-grid">
-          <a class="work" href="https://programs.sbs.co.kr/life/eatout/about/58369" target="_blank" rel="noopener">
-            <div class="thumb">🍽️</div>
+          <a class="work reveal" href="https://programs.sbs.co.kr/life/eatout/about/58369" target="_blank" rel="noopener" aria-label="외식하는 날 — SBS미디어 예능 프로그램, 공식 페이지 새 창">
+            <div class="thumb" aria-hidden="true">🍽️</div>
             <div class="meta">
               <span class="ch">SBS미디어</span>
               <h3>외식하는 날</h3>
@@ -313,8 +548,8 @@
               <span class="go">공식 페이지 보기 →</span>
             </div>
           </a>
-          <a class="work" href="https://search.naver.com/search.naver?query=JTBC+오늘부터+파티시에" target="_blank" rel="noopener">
-            <div class="thumb">🧁</div>
+          <a class="work reveal" href="https://search.naver.com/search.naver?query=JTBC+오늘부터+파티시에" target="_blank" rel="noopener" aria-label="오늘부터 파티시에 — JTBC 예능 프로그램, 프로그램 정보 새 창">
+            <div class="thumb" aria-hidden="true">🧁</div>
             <div class="meta">
               <span class="ch">JTBC</span>
               <h3>오늘부터 파티시에</h3>
@@ -322,8 +557,8 @@
               <span class="go">프로그램 정보 보기 →</span>
             </div>
           </a>
-          <a class="work" href="https://tv.apple.com/kr/show/밥친구/umc.cmc.3eh9x6h6ogjbf530ztjo5r9eg" target="_blank" rel="noopener">
-            <div class="thumb">🍚</div>
+          <a class="work reveal" href="https://tv.apple.com/kr/show/밥친구/umc.cmc.3eh9x6h6ogjbf530ztjo5r9eg" target="_blank" rel="noopener" aria-label="밥친구 — TV조선 예능 프로그램, 공식 페이지 새 창">
+            <div class="thumb" aria-hidden="true">🍚</div>
             <div class="meta">
               <span class="ch">TV조선</span>
               <h3>밥친구</h3>
@@ -338,11 +573,11 @@
     <!-- Contact -->
     <section class="block" id="contact">
       <div class="wrap">
-        <div class="contact-box">
+        <div class="contact-box reveal">
           <h2>프로젝트를 함께 만들어 볼까요?</h2>
           <p>예능 프로그램이든 AI 영상이든, 예산과 목표를 알려주시면 가장 합리적인 방법을 제안해 드립니다.</p>
           <div class="contact-actions">
-            <a href="mailto:hansungyi@naver.com" class="btn btn-white">✉️ 이메일로 문의하기</a>
+            <a href="mailto:hansungyi@naver.com?subject=%5B%EC%8A%A4%ED%8A%B0%EB%94%9478%5D%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AC%B8%EC%9D%98" class="btn btn-white">✉️ 이메일로 문의하기</a>
             <a href="https://instagram.com/hansunglee2025" target="_blank" rel="noopener" class="btn btn-outline-white">📷 @hansunglee2025</a>
           </div>
         </div>
@@ -361,5 +596,41 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // 테마 토글
+    (function () {
+      var btn = document.getElementById('themeToggle');
+      if (!btn) return;
+      var d = document.documentElement;
+      function currentIsDark() {
+        var forced = d.getAttribute('data-theme');
+        if (forced) return forced === 'dark';
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      btn.addEventListener('click', function () {
+        var next = currentIsDark() ? 'light' : 'dark';
+        d.setAttribute('data-theme', next);
+        try { localStorage.setItem('s78-theme', next); } catch (e) {}
+        btn.setAttribute('aria-pressed', String(next === 'dark'));
+      });
+    })();
+
+    // 스크롤 등장 애니메이션 (모션 최소화 선호 시 건너뜀)
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var items = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 </body>
 </html>
