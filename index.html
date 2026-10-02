@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="color-scheme" content="light dark" />
+  <meta name="color-scheme" content="dark light" />
   <title>스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작</title>
   <meta name="description" content="스튜디오78 이한성 PD - 예능 프로그램과 AI 영상 제작. KCA 2026 선정작 'AI 미식실록(The Gourmet Chronicles)' 등, 방송국과 넷플릭스가 신뢰하는 제작 파트너." />
   <meta name="author" content="이한성 (스튜디오78)" />
@@ -23,11 +23,11 @@
   <meta name="twitter:image" content="https://studio78-portfolio.vercel.app/og.png" />
 
   <!-- Theme color (라이트/다크) -->
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#0b0b0b" />
 
   <!-- Favicon (외부 파일 없이 인라인 SVG) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='50%25' y='54%25' font-family='Arial,sans-serif' font-size='30' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3E78%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
 
   <!-- 구조화 데이터 (검색엔진용) -->
   <script type="application/ld+json">
@@ -49,6 +49,11 @@
   }
   </script>
 
+  <!-- 트레일러 섹션 타이틀용 세리프 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@600;700&display=swap" />
+
   <!-- FOUC 방지 + 저장된 테마 즉시 적용 -->
   <script>
     (function () {
@@ -62,50 +67,46 @@
   </script>
 
   <style>
+    /* 미식실록 톤: 기본은 시네마틱 다크(블랙·골드), 토글로 아이보리 라이트 */
     :root {
-      --accent: #2563eb;
-      --accent-dark: #1d4ed8;
-      --accent-soft: #eff6ff;
-      --ink: #111827;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --bg: #ffffff;
-      --card-bg: #ffffff;
-      --header-bg: rgba(255, 255, 255, 0.85);
-      --radius: 16px;
-      --shadow: 0 4px 24px rgba(17, 24, 39, 0.06);
-      --shadow-hover: 0 12px 40px rgba(37, 99, 235, 0.14);
+      --accent: #d4a337;
+      --accent-dark: #e6bc5c;
+      --accent-soft: #1c1812;
+      --on-accent: #0b0b0b;
+      --red: #e0566b;
+      --teal: #2ab3a6;
+      --ink: #f2efe8;
+      --muted: #b9b4aa;
+      --line: #2a2a2a;
+      --bg: #0b0b0b;
+      --card-bg: #161616;
+      --header-bg: rgba(11, 11, 11, 0.85);
+      --glow-gold: rgba(212, 163, 55, 0.22);
+      --glow-red: rgba(190, 28, 58, 0.16);
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+      --shadow-hover: 0 14px 44px rgba(212, 163, 55, 0.18);
+      --serif: "Noto Serif KR", "Cormorant Garamond", Georgia, serif;
+      color-scheme: dark;
     }
-
-    /* 다크 테마 변수 (시스템 다크 — 단, 사용자가 라이트로 강제하지 않은 경우) */
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --accent: #3b82f6;
-        --accent-dark: #60a5fa;
-        --accent-soft: #172554;
-        --ink: #f1f5f9;
-        --muted: #94a3b8;
-        --line: #1f2937;
-        --bg: #0b1120;
-        --card-bg: #111827;
-        --header-bg: rgba(11, 17, 32, 0.85);
-        --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-        --shadow-hover: 0 12px 40px rgba(59, 130, 246, 0.25);
-      }
-    }
-    /* 사용자가 수동으로 다크 선택 시 항상 적용 */
-    :root[data-theme="dark"] {
-      --accent: #3b82f6;
-      --accent-dark: #60a5fa;
-      --accent-soft: #172554;
-      --ink: #f1f5f9;
-      --muted: #94a3b8;
-      --line: #1f2937;
-      --bg: #0b1120;
-      --card-bg: #111827;
-      --header-bg: rgba(11, 17, 32, 0.85);
-      --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-      --shadow-hover: 0 12px 40px rgba(59, 130, 246, 0.25);
+    :root[data-theme="light"] {
+      --accent: #8a6a1c;
+      --accent-dark: #6f5415;
+      --accent-soft: #f1e6cc;
+      --on-accent: #fffaf0;
+      --red: #a31631;
+      --teal: #17786f;
+      --ink: #1a1612;
+      --muted: #6b6256;
+      --line: #e4dccb;
+      --bg: #f7f2e8;
+      --card-bg: #fffaf0;
+      --header-bg: rgba(247, 242, 232, 0.88);
+      --glow-gold: rgba(212, 163, 55, 0.20);
+      --glow-red: rgba(190, 28, 58, 0.07);
+      --shadow: 0 4px 24px rgba(26, 22, 18, 0.07);
+      --shadow-hover: 0 14px 40px rgba(138, 106, 28, 0.16);
+      color-scheme: light;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -113,7 +114,7 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
+      font-family: "IBM Plex Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic",
         "맑은 고딕", "Apple SD Gothic Neo", Roboto, sans-serif;
       color: var(--ink);
       background: var(--bg);
@@ -132,7 +133,7 @@
     /* 본문 바로가기 (스크린리더/키보드) */
     .skip {
       position: absolute; left: 12px; top: -60px; z-index: 100;
-      background: var(--accent); color: #fff; padding: 10px 18px; border-radius: 8px;
+      background: var(--accent); color: var(--on-accent); padding: 10px 18px; border-radius: 8px;
       font-weight: 600; transition: top .2s;
     }
     .skip:focus { top: 12px; }
@@ -145,13 +146,17 @@
       border-bottom: 1px solid var(--line);
     }
     .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .logo { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
-    .logo span { color: var(--accent); }
+    .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+    .logo-mark { height: 34px; width: auto; flex: 0 0 auto; display: block; }
+    .logo-text b { color: var(--accent); font-weight: 800; }
+    .logo-light { display: none; }
+    :root[data-theme="light"] .logo-light { display: block; }
+    :root[data-theme="light"] .logo-dark { display: none; }
     .nav-links { display: flex; gap: 24px; align-items: center; }
     .nav-links a { color: var(--muted); font-weight: 500; font-size: 15px; transition: color .18s; }
     .nav-links a:hover { color: var(--ink); }
     .nav-cta {
-      background: var(--accent); color: #fff !important; padding: 10px 20px;
+      background: var(--accent); color: var(--on-accent) !important; padding: 10px 20px;
       border-radius: 999px; font-weight: 600; transition: background .18s, transform .18s;
     }
     .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
@@ -163,19 +168,16 @@
       cursor: pointer; font-size: 18px; line-height: 1; transition: border-color .18s, transform .18s;
     }
     .theme-toggle:hover { border-color: var(--accent); transform: translateY(-1px); }
-    .theme-toggle .sun { display: none; }
-    :root[data-theme="dark"] .theme-toggle .sun { display: block; }
-    :root[data-theme="dark"] .theme-toggle .moon { display: none; }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) .theme-toggle .sun { display: block; }
-      :root:not([data-theme="light"]) .theme-toggle .moon { display: none; }
-    }
+    .theme-toggle .moon { display: none; }
+    :root[data-theme="light"] .theme-toggle .moon { display: block; }
+    :root[data-theme="light"] .theme-toggle .sun { display: none; }
 
     /* ===== Hero ===== */
     .hero {
       padding: 96px 0 88px;
       background:
-        radial-gradient(1200px 500px at 80% -10%, var(--accent-soft), transparent 70%);
+        radial-gradient(1000px 560px at 6% -10%, var(--glow-gold), transparent 70%),
+        radial-gradient(900px 520px at 85% 90%, var(--glow-red), transparent 70%);
     }
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -187,8 +189,8 @@
       content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
     }
     .hero h1 {
-      font-size: clamp(32px, 6vw, 56px); line-height: 1.15; letter-spacing: -0.03em;
-      font-weight: 800; margin-bottom: 22px;
+      font-family: var(--serif); font-size: clamp(32px, 6vw, 58px); line-height: 1.2; letter-spacing: -0.02em;
+      font-weight: 700; margin-bottom: 22px;
     }
     .hero h1 .hl { color: var(--accent); }
     .hero p.lead {
@@ -201,7 +203,7 @@
       padding: 14px 28px; border-radius: 999px; transition: transform .18s, background .18s, box-shadow .18s;
       border: 1px solid transparent; cursor: pointer;
     }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow); }
+    .btn-primary { background: var(--accent); color: var(--on-accent); box-shadow: var(--shadow); }
     .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
     .btn-ghost { background: var(--card-bg); color: var(--ink); border-color: var(--line); }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
@@ -215,8 +217,8 @@
     /* ===== Section base ===== */
     section.block { padding: 84px 0; border-top: 1px solid var(--line); }
     .sec-head { max-width: 640px; margin-bottom: 48px; }
-    .sec-tag { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
-    .sec-head h2 { font-size: clamp(26px, 4vw, 38px); letter-spacing: -0.02em; margin: 10px 0 14px; font-weight: 800; }
+    .sec-tag { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+    .sec-head h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); letter-spacing: -0.01em; margin: 10px 0 14px; font-weight: 700; }
     .sec-head p { color: var(--muted); font-size: 17px; }
 
     /* ===== Strengths ===== */
@@ -227,7 +229,7 @@
     }
     .strength .ic {
       flex: 0 0 44px; width: 44px; height: 44px; border-radius: 12px; background: var(--accent);
-      color: #fff; display: grid; place-items: center; font-size: 22px; font-weight: 700;
+      color: var(--on-accent); display: grid; place-items: center; font-size: 22px; font-weight: 700;
     }
     .strength h3 { font-size: 18px; margin-bottom: 6px; }
     .strength p { color: var(--muted); font-size: 15px; }
@@ -238,7 +240,10 @@
       background: var(--card-bg); border: 1px solid var(--line); border-radius: var(--radius);
       padding: 32px 28px; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s, border-color .2s;
     }
-    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
+    .card { border-top: 4px solid var(--accent); }
+    .card:nth-child(2) { border-top-color: var(--red); }
+    .card:nth-child(3) { border-top-color: var(--teal); }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
     .card .emoji { font-size: 30px; margin-bottom: 18px; display: block; }
     .card h3 { font-size: 20px; margin-bottom: 10px; letter-spacing: -0.01em; }
     .card p { color: var(--muted); font-size: 15px; }
@@ -254,7 +259,7 @@
     }
     .step::before {
       counter-increment: step; content: counter(step, decimal-leading-zero);
-      color: var(--accent); font-weight: 800; font-size: 15px; letter-spacing: 0.04em;
+      font-family: "Cormorant Garamond", Georgia, serif; color: var(--accent); font-weight: 700; font-size: 34px; line-height: 1;
     }
     .step h3 { font-size: 17px; margin: 10px 0 8px; }
     .step p { color: var(--muted); font-size: 14px; }
@@ -267,11 +272,11 @@
       box-shadow: var(--shadow);
     }
     .spotlight .sp-badge {
-      display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff;
+      display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--on-accent);
       font-weight: 700; font-size: 13px; padding: 8px 15px; border-radius: 999px; margin-bottom: 18px;
       line-height: 1.4;
     }
-    .spotlight h2 { font-size: clamp(26px, 4vw, 40px); letter-spacing: -0.02em; font-weight: 800; margin-bottom: 6px; }
+    .spotlight h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 40px); letter-spacing: -0.01em; font-weight: 700; margin-bottom: 6px; }
     .spotlight .sp-sub { color: var(--accent); font-weight: 700; font-size: 15px; margin-bottom: 16px; }
     .spotlight p.sp-desc { color: var(--muted); font-size: 16px; margin-bottom: 22px; }
     .sp-chips { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -284,6 +289,66 @@
     .sp-stat b { display: block; font-size: 21px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; }
     .sp-stat small { color: var(--muted); font-size: 13px; }
 
+    /* ===== Chronicles of Taste 트레일러 (항상 시네마틱 다크) ===== */
+    section.cot {
+      --cot-bg: #0b0b0b; --cot-card: #161616; --cot-line: #2a2a2a; --cot-ink: #f2efe8;
+      --cot-muted: #b9b4aa; --cot-gold: #d4a337; --cot-teal: #2ab3a6; --cot-red: #e0566b;
+      position: relative; overflow: hidden; padding: 96px 0; color: var(--cot-ink); color-scheme: dark;
+      background:
+        radial-gradient(900px 520px at 8% 0%, rgba(212,163,55,.22), transparent 70%),
+        radial-gradient(800px 520px at 78% 70%, rgba(190,28,58,.18), transparent 70%),
+        var(--cot-bg);
+    }
+    .cot-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px 40px; margin-bottom: 40px; }
+    .cot-tag { color: var(--cot-gold); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+    .cot-title {
+      font-family: "Cormorant Garamond", Georgia, serif; font-weight: 700; font-size: clamp(40px, 7vw, 72px);
+      line-height: 1; letter-spacing: -0.01em; margin: 12px 0 10px;
+    }
+    .cot-title i { color: var(--cot-gold); font-weight: 500; }
+    .cot-lead { color: var(--cot-muted); font-size: 17px; max-width: 560px; }
+    .cot-badges { display: flex; flex-direction: column; gap: 8px; }
+    .cot-badges span {
+      border-left: 3px solid var(--cot-gold); padding: 2px 0 2px 12px; font-size: 14px; font-weight: 600; color: var(--cot-ink);
+    }
+    .cot-badges span small { display: block; color: var(--cot-muted); font-weight: 500; font-size: 13px; }
+
+    .cot-player { display: grid; grid-template-columns: 1.7fr 1fr; gap: 24px; align-items: stretch; }
+    .cot-video {
+      width: 100%; aspect-ratio: 16 / 9; display: block; background: #000; border-radius: 14px;
+      border: 1px solid #3a3222; box-shadow: 0 24px 64px rgba(0,0,0,.55);
+    }
+    .cot-chapters { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .cot-chapters button {
+      width: 100%; display: grid; grid-template-columns: 104px 1fr; gap: 14px; align-items: center; text-align: left;
+      background: transparent; color: inherit; font: inherit; cursor: pointer;
+      border: 1px solid transparent; border-left: 3px solid var(--c, var(--cot-muted));
+      border-radius: 10px; padding: 8px 10px 8px 12px; transition: background .18s, border-color .18s;
+    }
+    .cot-chapters button:hover { background: rgba(255,255,255,.04); }
+    .cot-chapters button[aria-current="true"] { background: var(--cot-card); border-color: var(--cot-line); border-left-color: var(--c, var(--cot-muted)); }
+    .cot-chapters img { width: 104px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; display: block; }
+    .cot-chapters .t { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; color: var(--c, var(--cot-muted)); }
+    .cot-chapters .n { display: block; font-size: 16px; font-weight: 700; line-height: 1.3; }
+    .cot-chapters .d { display: block; font-size: 13px; color: var(--cot-muted); line-height: 1.4; }
+
+    .cot-format { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+    .cot-step { background: var(--cot-card); border-radius: 12px; padding: 24px 22px; border-top: 4px solid var(--c); }
+    .cot-step .num { font-family: "Cormorant Garamond", Georgia, serif; font-size: 40px; font-weight: 700; line-height: 1; color: var(--c); }
+    .cot-step .tm { font-size: 13px; font-weight: 700; color: var(--c); margin: 8px 0 4px; }
+    .cot-step h3 { font-size: 18px; margin-bottom: 8px; }
+    .cot-step p { color: var(--cot-muted); font-size: 14px; }
+
+    .cot-facts {
+      display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 16px;
+      border: 1px solid var(--cot-line); border-radius: 12px; overflow: hidden;
+    }
+    .cot-facts div { padding: 20px 22px; border-left: 1px solid var(--cot-line); }
+    .cot-facts div:first-child { border-left: none; }
+    .cot-facts small { display: block; color: var(--cot-gold); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+    .cot-facts b { font-size: 16px; line-height: 1.4; display: block; }
+    .cot-note { margin-top: 18px; color: #8f8a80; font-size: 13px; }
+
     /* ===== Work ===== */
     .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .work {
@@ -293,10 +358,10 @@
     .work:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
     .work .thumb {
       height: 150px; display: grid; place-items: center; color: #fff; font-size: 40px;
-      background: linear-gradient(135deg, #2563eb, #1e40af);
+      background: radial-gradient(circle at 30% 20%, #6b5016, #1c1812 75%); border-bottom: 4px solid #d4a337;
     }
-    .work:nth-child(2) .thumb { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-    .work:nth-child(3) .thumb { background: linear-gradient(135deg, #1e40af, #0ea5e9); }
+    .work:nth-child(2) .thumb { background: radial-gradient(circle at 30% 20%, #6a1a2a, #1a0c10 75%); border-bottom-color: #a31631; }
+    .work:nth-child(3) .thumb { background: radial-gradient(circle at 30% 20%, #17524c, #0c1716 75%); border-bottom-color: #2ab3a6; }
     .work .meta { padding: 20px 22px; }
     .work .ch { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: 0.03em; }
     .work h3 { font-size: 18px; margin-top: 4px; }
@@ -309,13 +374,17 @@
 
     /* ===== Contact ===== */
     .contact-box {
-      background: linear-gradient(135deg, #1e3a8a, #2563eb);
-      color: #fff; border-radius: 24px; padding: 56px 44px; text-align: center;
+      background:
+        radial-gradient(700px 360px at 10% 0%, rgba(212,163,55,.30), transparent 70%),
+        radial-gradient(700px 360px at 80% 100%, rgba(190,28,58,.26), transparent 70%),
+        #0b0b0b;
+      color: #f2efe8; border: 1px solid #2a2a2a; border-top: 4px solid #d4a337;
+      border-radius: 20px; padding: 56px 44px; text-align: center;
     }
-    .contact-box h2 { font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.02em; margin-bottom: 14px; }
-    .contact-box p { color: #dbeafe; font-size: 17px; max-width: 520px; margin: 0 auto 32px; }
+    .contact-box h2 { font-family: var(--serif); font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.02em; margin-bottom: 14px; }
+    .contact-box p { color: #b9b4aa; font-size: 17px; max-width: 520px; margin: 0 auto 32px; }
     .contact-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
-    .btn-white { background: #fff; color: var(--accent-dark); }
+    .btn-white { background: #d4a337; color: #0b0b0b; }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
     .btn-outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
     .btn-outline-white:hover { border-color: #fff; transform: translateY(-2px); }
@@ -334,12 +403,20 @@
       .cards, .work-grid { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; }
       .spotlight { grid-template-columns: 1fr; padding: 32px 26px; }
+      .cot-player { grid-template-columns: 1fr; }
+      .cot-format, .cot-facts { grid-template-columns: 1fr 1fr; }
+      .cot-facts div:nth-child(3) { border-left: none; }
+      .cot-facts div:nth-child(n+3) { border-top: 1px solid var(--cot-line); }
       .nav-links a:not(.nav-cta) { display: none; }
     }
     @media (max-width: 620px) {
       .hero { padding: 64px 0 56px; }
       section.block { padding: 60px 0; }
       .strengths, .cards, .work-grid, .steps { grid-template-columns: 1fr; }
+      section.cot { padding: 64px 0; }
+      .cot-format, .cot-facts { grid-template-columns: 1fr; }
+      .cot-facts div, .cot-facts div:nth-child(3) { border-left: none; }
+      .cot-facts div + div { border-top: 1px solid var(--cot-line); }
       .contact-box { padding: 40px 24px; }
       .btn { width: 100%; justify-content: center; }
       .hero-actions { flex-direction: column; align-items: stretch; }
@@ -358,9 +435,14 @@
   <!-- Header -->
   <header>
     <div class="wrap nav">
-      <a href="#top" class="logo">스튜디오<span>78</span></a>
+      <a href="#top" class="logo" aria-label="스튜디오78 홈">
+        <img class="logo-mark logo-light" src="assets/logo-mark-light.svg" alt="스튜디오78 로고" height="34" />
+        <img class="logo-mark logo-dark" src="assets/logo-mark-dark.svg" alt="" aria-hidden="true" height="34" />
+        <span class="logo-text">스튜디오<b>78</b></span>
+      </a>
       <nav class="nav-links" aria-label="주요 메뉴">
         <a href="#featured">미식실록</a>
+        <a href="#trailer">트레일러</a>
         <a href="#services">서비스</a>
         <a href="#process">진행 방식</a>
         <a href="#work">작업 사례</a>
@@ -428,6 +510,69 @@
             <div class="sp-stat"><b>K-Food</b><small>넷플릭스·디즈니+ 지향</small></div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Chronicles of Taste: ATF 2026 쇼케이스 트레일러 -->
+    <section class="cot" id="trailer" aria-labelledby="cot-title">
+      <div class="wrap">
+        <div class="cot-head reveal">
+          <div>
+            <span class="cot-tag">ATF 2026 Showcase · Concept Trailer</span>
+            <h2 class="cot-title" id="cot-title">Chronicles <i>of</i> Taste</h2>
+            <p class="cot-lead">미식실록의 영문 글로벌 버전. 500년 전 기록 속 레시피를 AI로 되살리는 포맷을 3분 트레일러로 먼저 만나보세요.</p>
+          </div>
+          <div class="cot-badges">
+            <span>ATF 2026 쇼케이스 트랙 선정<small>싱가포르 · 12월 1–4일</small></span>
+            <span>KCA 2026 해외진출형 기획개발 지원사업 선정<small>45분 × 10부작 AI 에듀테인먼트</small></span>
+          </div>
+        </div>
+
+        <div class="cot-player reveal">
+          <video class="cot-video" id="cot-video" controls playsinline preload="metadata"
+                 poster="assets/chronicles/poster.jpg"
+                 aria-label="Chronicles of Taste 컨셉 트레일러 (3분, 영어)">
+            <source src="assets/chronicles/trailer.mp4" type="video/mp4" />
+          </video>
+          <ol class="cot-chapters" aria-label="트레일러 구간 바로가기">
+            <li><button type="button" data-t="0" style="--c:#b9b4aa"><img src="assets/chronicles/ch1.jpg" alt="" loading="lazy" /><span><span class="t">00:00 · 오프닝</span><span class="n">Ep 1 효종갱</span><span class="d">조선의 첫 배달음식</span></span></button></li>
+            <li><button type="button" data-t="24" style="--c:#2ab3a6"><img src="assets/chronicles/ch2.jpg" alt="" loading="lazy" /><span><span class="t">00:24 · STEP 01</span><span class="n">데이터 각성</span><span class="d">“종일 끓인다” → 92°C · 11시간</span></span></button></li>
+            <li><button type="button" data-t="48" style="--c:#d4a337"><img src="assets/chronicles/ch3.jpg" alt="" loading="lazy" /><span><span class="t">00:48 · STEP 02</span><span class="n">팩트 공방</span><span class="d">네 명의 전문가, 한 그릇</span></span></button></li>
+            <li><button type="button" data-t="90" style="--c:#e0566b"><img src="assets/chronicles/ch4.jpg" alt="" loading="lazy" /><span><span class="t">01:30 · STEP 03</span><span class="n">키친 언더 파이어</span><span class="d">전통팀 vs 진화팀</span></span></button></li>
+            <li><button type="button" data-t="150" style="--c:#d4a337"><img src="assets/chronicles/ch5.jpg" alt="" loading="lazy" /><span><span class="t">02:30 · STEP 04</span><span class="n">세 번째 접시</span><span class="d">셰프의 손맛 vs AI의 데이터</span></span></button></li>
+          </ol>
+        </div>
+
+        <div class="cot-format">
+          <div class="cot-step reveal" style="--c:#2ab3a6">
+            <div class="num">01</div><div class="tm">00 – 07분</div>
+            <h3>데이터 각성</h3>
+            <p>기록이 공개되고, AI가 원문을 읽어 “종일 끓인다”를 온도·그램·분으로 바꿉니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#d4a337">
+            <div class="num">02</div><div class="tm">07 – 17분</div>
+            <h3>팩트 공방</h3>
+            <p>역사가·과학자·평론가가 요리의 배경을 풀고, AI 실시간 팩트체크와 함께 기록의 해석을 두고 맞붙습니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#e0566b">
+            <div class="num">03</div><div class="tm">17 – 37분</div>
+            <h3>키친 언더 파이어</h3>
+            <p>전통팀 vs 진화팀. 4K 고속 카메라로 담고, 셰프의 심박수와 조리 온도를 화면에 실시간으로 띄웁니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#d4a337">
+            <div class="num">04</div><div class="tm">37 – 45분</div>
+            <h3>세 번째 접시</h3>
+            <p>라벨 없는 세 접시 — 두 셰프의 요리와 AI의 해석. 블라인드 시식 후 ‘새 레시피 기록’으로 남깁니다.</p>
+          </div>
+        </div>
+
+        <div class="cot-facts reveal">
+          <div><small>포맷</small><b>45분 × 10부작<br />시즌 1 · 10개의 기록</b></div>
+          <div><small>연구 파트너</small><b>KAIST<br />문화기술대학원</b></div>
+          <div><small>기술</small><b>Google Gemini<br />Upstage Document AI</b></div>
+          <div><small>ATF 목표</small><b>공동제작 · 플랫폼 선판매<br />포맷 라이선싱</b></div>
+        </div>
+        <p class="cot-note">컨셉 트레일러 · 영상 속 인물과 장면은 연출용 이미지이며, 출연진은 섭외 진행 중입니다.</p>
       </div>
     </section>
 
@@ -604,9 +749,7 @@
       if (!btn) return;
       var d = document.documentElement;
       function currentIsDark() {
-        var forced = d.getAttribute('data-theme');
-        if (forced) return forced === 'dark';
-        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        return d.getAttribute('data-theme') !== 'light';
       }
       btn.addEventListener('click', function () {
         var next = currentIsDark() ? 'light' : 'dark';
@@ -630,6 +773,27 @@
         });
       }, { threshold: 0.12 });
       items.forEach(function (el) { io.observe(el); });
+    })();
+
+    // 트레일러 구간 바로가기 + 현재 구간 표시
+    (function () {
+      var v = document.getElementById('cot-video');
+      if (!v) return;
+      var btns = Array.prototype.slice.call(document.querySelectorAll('.cot-chapters button'));
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          v.currentTime = Number(b.getAttribute('data-t'));
+          var p = v.play();
+          if (p && p.catch) p.catch(function () {});
+        });
+      });
+      function mark() {
+        var cur = 0;
+        btns.forEach(function (b, i) { if (v.currentTime >= Number(b.getAttribute('data-t'))) cur = i; });
+        btns.forEach(function (b, i) { b.setAttribute('aria-current', String(i === cur)); });
+      }
+      v.addEventListener('timeupdate', mark);
+      mark();
     })();
   </script>
 </body>
