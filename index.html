@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark light" />
   <title>스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작</title>
-  <meta name="description" content="스튜디오78 이한성 PD - 예능 프로그램과 AI 영상 제작. KCA 2026 선정작 'AI 미식실록(The Gourmet Chronicles)' 등, 방송국과 넷플릭스가 신뢰하는 제작 파트너." />
+  <meta name="description" content="스튜디오78 이한성 PD - 예능 프로그램과 AI 영상 제작. KCA 2026 선정·ATF 2026 쇼케이스작 '미식실록(Chronicles of Taste)' 등, 방송국과 넷플릭스가 신뢰하는 제작 파트너." />
   <meta name="author" content="이한성 (스튜디오78)" />
 
   <!-- Canonical & Social (⚠️ 배포 URL 확정 시 studio78-portfolio.vercel.app 부분을 실제 도메인으로 교체하세요) -->
@@ -414,6 +414,17 @@
       section.block { padding: 60px 0; }
       .strengths, .cards, .work-grid, .steps { grid-template-columns: 1fr; }
       section.cot { padding: 64px 0; }
+      /* 모바일 헤더: 한 줄 유지 */
+      .nav { height: 60px; gap: 12px; }
+      .logo { gap: 8px; font-size: 18px; white-space: nowrap; }
+      .logo-mark { height: 28px; }
+      .nav-links { gap: 8px; flex: 0 0 auto; }
+      .theme-toggle { width: 36px; height: 36px; font-size: 16px; }
+      .nav-cta { padding: 8px 14px; font-size: 14px; white-space: nowrap; }
+    }
+    @media (max-width: 359px) {
+      .wrap { padding: 0 16px; }
+      .logo-text { display: none; }
       .cot-format, .cot-facts { grid-template-columns: 1fr; }
       .cot-facts div, .cot-facts div:nth-child(3) { border-left: none; }
       .cot-facts div + div { border-top: 1px solid var(--cot-line); }
@@ -488,26 +499,26 @@
           <div>
             <span class="sp-badge">🏆 KCA 2026 해외진출형 방송콘텐츠 기획개발 지원사업 선정</span>
             <h2>미식실록 — 다시 쓰는 맛</h2>
-            <div class="sp-sub">The Gourmet Chronicles: Rewriting Flavor · AI 한국 음식 복원 쇼</div>
+            <div class="sp-sub">Chronicles of Taste · Taste, Rewritten by AI</div>
             <p class="sp-desc">
-              500년 전 사라진 레시피를 AI로 복원하고, 인간 셰프와 AI 로봇이 펼치는
-              하이엔드 미식 배틀. 고문헌 속 모호한 기록을 정밀한 데이터 레시피로 되살려,
-              K-푸드의 '왜'에 답하는 글로벌 지향 시네마틱 포맷입니다.
-              <br />(부산콘텐츠마켓 BCM 2026 피칭작)
+              역사 기록 속 사라진 레시피를 AI로 복원하는 엔터테인먼트 시리즈. 고문헌의 모호한 문장을
+              온도·그램·분 단위의 데이터 레시피로 되살리고, 전통팀과 진화팀 셰프, 그리고 AI의 해석이
+              블라인드 시식으로 맞붙습니다.
+              <br />(부산콘텐츠마켓 BCM 2026 피칭 · ATF 2026 쇼케이스 선정)
             </p>
             <div class="sp-chips">
               <span>AI 에듀테인먼트</span>
               <span>45분 × 10부작</span>
-              <span>Google Gemini + Upstage</span>
-              <span>글로벌 OTT 지향</span>
-              <span>2027 공개 목표</span>
+              <span>Google Gemini · Upstage</span>
+              <span>KAIST 연구 파트너</span>
+              <span>글로벌 포맷 지향</span>
             </div>
           </div>
           <div class="sp-stats">
             <div class="sp-stat"><b>10부작</b><small>회당 45분 시리즈</small></div>
-            <div class="sp-stat"><b>500년</b><small>사라진 레시피 복원</small></div>
-            <div class="sp-stat"><b>AI × 셰프</b><small>인간 vs AI 로봇 배틀</small></div>
-            <div class="sp-stat"><b>K-Food</b><small>넷플릭스·디즈니+ 지향</small></div>
+            <div class="sp-stat"><b>500년</b><small>기록 속 레시피 복원</small></div>
+            <div class="sp-stat"><b>3개의 접시</b><small>전통팀 · 진화팀 · AI</small></div>
+            <div class="sp-stat"><b>Global</b><small>공동제작 · 선판매 · 포맷 라이선싱</small></div>
           </div>
         </div>
       </div>
