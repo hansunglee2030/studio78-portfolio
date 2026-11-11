@@ -348,6 +348,24 @@
     .cot-facts b { font-size: 16px; line-height: 1.4; display: block; }
     .cot-note { margin-top: 18px; color: #8f8a80; font-size: 13px; }
 
+    /* ===== 유배일지 (같은 레이아웃, 제주 바다·현무암 톤) ===== */
+    section.cot.exile {
+      --cot-bg: #0a0d10; --cot-card: #141a1f; --cot-line: #263039; --cot-ink: #eef1f2;
+      --cot-muted: #a9b4ba; --cot-gold: #e6c25a; --cot-teal: #8fbccf; --cot-red: #c8644a;
+      background:
+        radial-gradient(900px 520px at 92% 0%, rgba(143,188,207,.20), transparent 70%),
+        radial-gradient(800px 520px at 10% 80%, rgba(230,194,90,.12), transparent 70%),
+        var(--cot-bg);
+    }
+    .exile .cot-title { font-family: var(--serif); letter-spacing: -0.02em; }
+    .exile .cot-title small {
+      display: block; margin-top: 10px; font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(20px, 2.6vw, 28px); font-weight: 500; font-style: italic; color: var(--cot-teal); letter-spacing: 0;
+    }
+    .exile .cot-badges span { border-left-color: var(--cot-teal); }
+    .exile .cot-facts small { color: var(--cot-teal); }
+    @media (min-width: 861px) { .exile .cot-format { grid-template-columns: repeat(5, 1fr); } }
+
     /* ===== Work ===== */
     .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .work {
@@ -453,6 +471,7 @@
       <nav class="nav-links" aria-label="주요 메뉴">
         <a href="#featured">미식실록</a>
         <a href="#trailer">트레일러</a>
+        <a href="#exile">유배일지</a>
         <a href="#services">서비스</a>
         <a href="#process">진행 방식</a>
         <a href="#work">작업 사례</a>
@@ -583,6 +602,75 @@
           <div><small>ATF 목표</small><b>공동제작 · 플랫폼 선판매<br />포맷 라이선싱</b></div>
         </div>
         <p class="cot-note">컨셉 트레일러 · 영상 속 인물과 장면은 연출용 이미지이며, 출연진은 섭외 진행 중입니다.</p>
+      </div>
+    </section>
+
+    <!-- 유배일지: 3회 제주 대정 AI 재연 티저 -->
+    <section class="cot exile" id="exile" aria-labelledby="exile-title">
+      <div class="wrap">
+        <div class="cot-head reveal">
+          <div>
+            <span class="cot-tag">KAIST CT × AI 선정 · AI 재연 티저</span>
+            <h2 class="cot-title" id="exile-title">유배일지<small>The Chronicles of Exile</small></h2>
+            <p class="cot-lead">조선 유배인이 남긴 실제 기록이 규칙이 됩니다. 두 명의 셀럽이 그 조건 그대로 유배지에서 살고, 마지막 날 ‘유배 저작’을 내야 풀려나는 역사 리얼리티 예능. 3회 제주 대정, 추사 김정희 편의 AI 재연을 먼저 만나보세요.</p>
+          </div>
+          <div class="cot-badges">
+            <span>KAIST CT × AI 선정<small>2026 KOCCA × KAIST CT × AI 콘텐츠 마이크로디그리</small></span>
+            <span>역사 리얼리티 예능 · 기획 개발 중<small>60분 × 10부작 · 유배지 9곳 + 해배 특집</small></span>
+            <span>사실 레이어 + 상상 레이어<small>사료는 원문 자막으로, 예능은 미션으로</small></span>
+          </div>
+        </div>
+
+        <div class="cot-player reveal">
+          <video class="cot-video" id="exile-video" controls playsinline muted preload="metadata"
+                 poster="assets/exile/poster.jpg"
+                 aria-label="유배일지 3회 제주 대정 AI 재연 티저 (1분, 자막 포함)">
+            <source src="assets/exile/teaser.mp4" type="video/mp4" />
+          </video>
+          <ol class="cot-chapters" aria-label="티저 구간 바로가기">
+            <li><button type="button" data-t="0" style="--c:#a9b4ba"><img src="assets/exile/ch1.jpg" alt="" loading="lazy" /><span><span class="t">00:00 · 1840 제주 대정</span><span class="n">위리안치</span><span class="d">가시 울타리 안이 세상의 전부</span></span></button></li>
+            <li><button type="button" data-t="12" style="--c:#8fbccf"><img src="assets/exile/ch2.jpg" alt="" loading="lazy" /><span><span class="t">00:12 · 편지</span><span class="n">반찬 목록</span><span class="d">민어 · 곶감 · 어란 · 김치</span></span></button></li>
+            <li><button type="button" data-t="20" style="--c:#c8644a"><img src="assets/exile/ch3.jpg" alt="" loading="lazy" /><span><span class="t">00:20 · 택배</span><span class="n">바다 건너 온 꾸러미</span><span class="d">집안에서 보낸 반찬 보따리</span></span></button></li>
+            <li><button type="button" data-t="38" style="--c:#e6c25a"><img src="assets/exile/ch4.jpg" alt="" loading="lazy" /><span><span class="t">00:38 · 사료</span><span class="n">“인절미는 다 상해 버렸다”</span><span class="d">국립중앙박물관 소장 한글편지</span></span></button></li>
+            <li><button type="button" data-t="46" style="--c:#8fbccf"><img src="assets/exile/ch5.jpg" alt="" loading="lazy" /><span><span class="t">00:46 · 엔딩</span><span class="n">수선화</span><span class="d">버려진 것을 귀하게 본 8년 3개월</span></span></button></li>
+          </ol>
+        </div>
+
+        <div class="cot-format">
+          <div class="cot-step reveal" style="--c:#a9b4ba">
+            <div class="num">01</div><div class="tm">00 – 05분</div>
+            <h3>교지 낭독</h3>
+            <p>압송관이 사료를 근거로 형벌·거처·금지 사항을 통보하고 휴대폰을 압수합니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#8fbccf">
+            <div class="num">02</div><div class="tm">05 – 15분</div>
+            <h3>압송과 도착</h3>
+            <p>배와 도보로 유배지까지. 행선지는 끝까지 알려주지 않습니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#c8644a">
+            <div class="num">03</div><div class="tm">15 – 40분</div>
+            <h3>적소 생활</h3>
+            <p>실제 마을 주민 ‘보수주인’의 집에서 노동하고 끼니를 해결하며, 사료 속 일화로 만든 미션을 수행합니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#e6c25a">
+            <div class="num">04</div><div class="tm">40 – 48분</div>
+            <h3>편지</h3>
+            <p>출연자의 실제 가족이 손편지와 물품을 보내옵니다. 상하거나 엉뚱한 물건이 오는 것까지 기록 그대로.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#8fbccf">
+            <div class="num">05</div><div class="tm">48 – 60분</div>
+            <h3>저작과 해배 심사</h3>
+            <p>도감·맛 지도·서첩 같은 ‘유배 저작’을 제출하고, 압송관이 해배와 유배 연장을 판정합니다.</p>
+          </div>
+        </div>
+
+        <div class="cot-facts reveal">
+          <div><small>포맷</small><b>60분 × 10부작<br />강진 · 흑산도 · 제주 외 9곳</b></div>
+          <div><small>출연</small><b>유배인 2 + 압송관 1<br />회차별 보수주인(실제 주민)</b></div>
+          <div><small>기술</small><b>AI 재연 VCR · 고문체 변환<br />AI 화자 인식 고정캠</b></div>
+          <div><small>확장</small><b>단행본 『유배일지』<br />유배길 투어 · 해외 포맷</b></div>
+        </div>
+        <p class="cot-note">AI 재연 러프컷 · [사료] 표기 장면은 실제 기록에 근거하며, 영상 속 인물과 장면은 AI로 생성한 연출 이미지입니다.</p>
       </div>
     </section>
 
@@ -786,10 +874,10 @@
     })();
 
     // 트레일러 구간 바로가기 + 현재 구간 표시
-    (function () {
-      var v = document.getElementById('cot-video');
+    Array.prototype.forEach.call(document.querySelectorAll('.cot-player'), function (player) {
+      var v = player.querySelector('video');
       if (!v) return;
-      var btns = Array.prototype.slice.call(document.querySelectorAll('.cot-chapters button'));
+      var btns = Array.prototype.slice.call(player.querySelectorAll('.cot-chapters button'));
       btns.forEach(function (b) {
         b.addEventListener('click', function () {
           v.currentTime = Number(b.getAttribute('data-t'));
@@ -804,7 +892,7 @@
       }
       v.addEventListener('timeupdate', mark);
       mark();
-    })();
+    });
   </script>
 </body>
 </html>
