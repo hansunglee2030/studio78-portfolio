@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark light" />
-  <title>스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작</title>
-  <meta name="description" content="스튜디오78 이한성 PD - 예능 프로그램과 AI 영상 제작. KCA 2026 선정·ATF 2026 쇼케이스작 '미식실록(Chronicles of Taste)' 등, 방송국과 넷플릭스가 신뢰하는 제작 파트너." />
+  <title>Studio78 | Hansung Lee · Broadcast &amp; AI Video Production</title>
+  <meta name="description" content="Studio78, led by producer Hansung Lee — entertainment shows and AI video production. Creator of Chronicles of Taste (KCA 2026 selection, ATF 2026 Showcase), trusted by Korean broadcasters and Netflix." />
   <meta name="author" content="이한성 (스튜디오78)" />
 
   <!-- Canonical & Social (⚠️ 배포 URL 확정 시 studio78-portfolio.vercel.app 부분을 실제 도메인으로 교체하세요) -->
   <link rel="canonical" href="https://studio78-portfolio.vercel.app/" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="스튜디오78" />
-  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:site_name" content="Studio78" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ko_KR" />
   <meta property="og:url" content="https://studio78-portfolio.vercel.app/" />
-  <meta property="og:title" content="스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작" />
-  <meta property="og:description" content="예능 프로그램과 AI 영상 제작. 군더더기 없는 깔끔한 제작, 예산에 맞춘 합리적 비용." />
+  <meta property="og:title" content="Studio78 | Hansung Lee · Broadcast &amp; AI Video Production" />
+  <meta property="og:description" content="Entertainment shows and AI video production. Clean, no-frills work at a cost that fits your budget." />
   <meta property="og:image" content="https://studio78-portfolio.vercel.app/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작" />
-  <meta name="twitter:description" content="예능 프로그램과 AI 영상 제작. 군더더기 없는 깔끔한 제작, 예산에 맞춘 합리적 비용." />
+  <meta name="twitter:title" content="Studio78 | Hansung Lee · Broadcast &amp; AI Video Production" />
+  <meta name="twitter:description" content="Entertainment shows and AI video production. Clean, no-frills work at a cost that fits your budget." />
   <meta name="twitter:image" content="https://studio78-portfolio.vercel.app/og.png" />
 
   <!-- Theme color (라이트/다크) -->
@@ -61,6 +62,8 @@
       try {
         var t = localStorage.getItem('s78-theme');
         if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+        var l = localStorage.getItem('s78-lang');
+        if (l === 'ko' || l === 'en') d.setAttribute('lang', l);
       } catch (e) {}
     })();
   </script>
@@ -170,6 +173,22 @@
     .theme-toggle .moon { display: none; }
     :root[data-theme="light"] .theme-toggle .moon { display: block; }
     :root[data-theme="light"] .theme-toggle .sun { display: none; }
+
+    /* 언어 토글: html[lang]에 따라 반대 언어 요소 숨김 (기본 EN) */
+    html[lang="en"] body [lang="ko"], html[lang="ko"] body [lang="en"] { display: none !important; }
+    .lang-toggle {
+      display: inline-flex; align-items: center; height: 40px; padding: 3px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--card-bg); cursor: pointer; font: inherit;
+      transition: border-color .18s;
+    }
+    .lang-toggle:hover { border-color: var(--accent); }
+    .lang-toggle span {
+      display: grid; place-items: center; min-width: 34px; height: 100%; padding: 0 8px; border-radius: 999px;
+      font-size: 13px; font-weight: 700; color: var(--muted); transition: background .18s, color .18s;
+    }
+    html[lang="en"] .lang-toggle .l-en, html[lang="ko"] .lang-toggle .l-ko { background: var(--accent); color: var(--on-accent); }
+    main > section:first-child { border-top: none; }
+    .cta-short { display: none; }
 
     /* ===== Hero ===== */
     .hero {
@@ -437,7 +456,11 @@
       .logo-mark { height: 28px; }
       .nav-links { gap: 8px; flex: 0 0 auto; }
       .theme-toggle { width: 36px; height: 36px; font-size: 16px; }
+      .lang-toggle { height: 36px; }
+      .lang-toggle span { min-width: 28px; padding: 0 6px; font-size: 12px; }
       .nav-cta { padding: 8px 14px; font-size: 14px; white-space: nowrap; }
+      .cta-long { display: none; }
+      .cta-short { display: inline; }
     }
     @media (max-width: 359px) {
       .wrap { padding: 0 16px; }
@@ -458,54 +481,228 @@
   </style>
 </head>
 <body>
-  <a href="#top" class="skip">본문 바로가기</a>
+  <a href="#top" class="skip"><span lang="en">Skip to content</span><span lang="ko">본문 바로가기</span></a>
 
   <!-- Header -->
   <header>
     <div class="wrap nav">
-      <a href="#top" class="logo" aria-label="스튜디오78 홈">
-        <img class="logo-mark logo-light" src="assets/logo-mark-light.png" alt="스튜디오78 로고" height="34" />
+      <a href="#top" class="logo" data-aria-en="Studio78 home" data-aria-ko="스튜디오78 홈" aria-label="Studio78 home">
+        <img class="logo-mark logo-light" src="assets/logo-mark-light.png" alt="Studio78 logo" height="34" />
         <img class="logo-mark logo-dark" src="assets/logo-mark-dark.png" alt="" aria-hidden="true" height="34" />
-        <span class="logo-text">스튜디오<b>78</b></span>
+        <span class="logo-text"><span lang="en">Studio<b>78</b></span><span lang="ko">스튜디오<b>78</b></span></span>
       </a>
-      <nav class="nav-links" aria-label="주요 메뉴">
-        <a href="#featured">미식실록</a>
-        <a href="#trailer">트레일러</a>
-        <a href="#exile">유배일지</a>
-        <a href="#services">서비스</a>
-        <a href="#process">진행 방식</a>
-        <a href="#work">작업 사례</a>
-        <a href="#contact">문의</a>
-        <button type="button" class="theme-toggle" id="themeToggle" aria-label="라이트/다크 테마 전환">
+      <nav class="nav-links" data-aria-en="Main menu" data-aria-ko="주요 메뉴" aria-label="Main menu">
+        <a href="#trailer"><span lang="en">Taste</span><span lang="ko">미식실록</span></a>
+        <a href="#exile"><span lang="en">Exile</span><span lang="ko">유배일지</span></a>
+        <a href="#services"><span lang="en">Services</span><span lang="ko">서비스</span></a>
+        <a href="#process"><span lang="en">Process</span><span lang="ko">진행 방식</span></a>
+        <a href="#work"><span lang="en">Work</span><span lang="ko">작업 사례</span></a>
+        <a href="#contact"><span lang="en">Contact</span><span lang="ko">문의</span></a>
+        <button type="button" class="lang-toggle" id="langToggle" data-aria-en="Switch to Korean" data-aria-ko="Switch to English" aria-label="Switch to Korean">
+          <span class="l-en" aria-hidden="true">EN</span><span class="l-ko" aria-hidden="true">한</span>
+        </button>
+        <button type="button" class="theme-toggle" id="themeToggle" data-aria-en="Toggle light/dark theme" data-aria-ko="라이트/다크 테마 전환" aria-label="Toggle light/dark theme">
           <span class="moon" aria-hidden="true">🌙</span>
           <span class="sun" aria-hidden="true">☀️</span>
         </button>
-        <a href="#contact" class="nav-cta">프로젝트 문의</a>
+        <a href="#contact" class="nav-cta"><span lang="en"><span class="cta-long">Let's talk</span><span class="cta-short">Contact</span></span><span lang="ko"><span class="cta-long">프로젝트 문의</span><span class="cta-short">문의</span></span></a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
   <main id="top">
+    <!-- Chronicles of Taste: ATF 2026 쇼케이스 트레일러 -->
+    <section class="cot" id="trailer" aria-labelledby="cot-title">
+      <div class="wrap">
+        <div class="cot-head reveal">
+          <div>
+            <span class="cot-tag">ATF 2026 Showcase · Concept Trailer</span>
+            <h2 class="cot-title" id="cot-title">Chronicles <i>of</i> Taste</h2>
+            <p class="cot-lead" lang="en">The global English edition of Misik Sillok. Watch the 3-minute trailer for a format that brings 500-year-old recipes back to life with AI.</p>
+            <p class="cot-lead" lang="ko">미식실록의 영문 글로벌 버전. 500년 전 기록 속 레시피를 AI로 되살리는 포맷을 3분 트레일러로 먼저 만나보세요.</p>
+          </div>
+          <div class="cot-badges">
+            <span lang="en">Selected for the ATF 2026 Showcase<small>Singapore · Dec 1–4</small></span>
+            <span lang="ko">ATF 2026 쇼케이스 트랙 선정<small>싱가포르 · 12월 1–4일</small></span>
+            <span lang="en">KCA 2026 Global Content Development Grant<small>10 × 45-min AI edutainment series</small></span>
+            <span lang="ko">KCA 2026 해외진출형 기획개발 지원사업 선정<small>45분 × 10부작 AI 에듀테인먼트</small></span>
+          </div>
+        </div>
+
+        <div class="cot-player reveal">
+          <video class="cot-video" id="cot-video" controls playsinline preload="metadata"
+                 poster="assets/chronicles/poster.jpg"
+                 data-aria-en="Chronicles of Taste concept trailer (3 min, English)" data-aria-ko="Chronicles of Taste 컨셉 트레일러 (3분, 영어)"
+                 aria-label="Chronicles of Taste concept trailer (3 min, English)">
+            <source src="assets/chronicles/trailer.mp4" type="video/mp4" />
+          </video>
+          <ol class="cot-chapters" data-aria-en="Trailer chapters" data-aria-ko="트레일러 구간 바로가기" aria-label="Trailer chapters">
+            <li><button type="button" data-t="0" style="--c:#b9b4aa"><img src="assets/chronicles/ch1.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">00:00 · OPENING</span><span class="n">Ep 1 Hyojonggaeng</span><span class="d">Joseon's first food delivery</span></span><span lang="ko"><span class="t">00:00 · 오프닝</span><span class="n">Ep 1 효종갱</span><span class="d">조선의 첫 배달음식</span></span></button></li>
+            <li><button type="button" data-t="24" style="--c:#2ab3a6"><img src="assets/chronicles/ch2.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">00:24 · STEP 01</span><span class="n">Data Awakening</span><span class="d">“Simmer all day” → 92°C · 11 hours</span></span><span lang="ko"><span class="t">00:24 · STEP 01</span><span class="n">데이터 각성</span><span class="d">“종일 끓인다” → 92°C · 11시간</span></span></button></li>
+            <li><button type="button" data-t="48" style="--c:#d4a337"><img src="assets/chronicles/ch3.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">00:48 · STEP 02</span><span class="n">Fact Clash</span><span class="d">Four experts, one bowl</span></span><span lang="ko"><span class="t">00:48 · STEP 02</span><span class="n">팩트 공방</span><span class="d">네 명의 전문가, 한 그릇</span></span></button></li>
+            <li><button type="button" data-t="90" style="--c:#e0566b"><img src="assets/chronicles/ch4.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">01:30 · STEP 03</span><span class="n">Kitchen Under Fire</span><span class="d">Tradition vs. Evolution</span></span><span lang="ko"><span class="t">01:30 · STEP 03</span><span class="n">키친 언더 파이어</span><span class="d">전통팀 vs 진화팀</span></span></button></li>
+            <li><button type="button" data-t="150" style="--c:#d4a337"><img src="assets/chronicles/ch5.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">02:30 · STEP 04</span><span class="n">The Third Plate</span><span class="d">A chef's touch vs. AI's data</span></span><span lang="ko"><span class="t">02:30 · STEP 04</span><span class="n">세 번째 접시</span><span class="d">셰프의 손맛 vs AI의 데이터</span></span></button></li>
+          </ol>
+        </div>
+
+        <div class="cot-format">
+          <div class="cot-step reveal" style="--c:#2ab3a6">
+            <div class="num">01</div><div class="tm"><span lang="en">00 – 07 min</span><span lang="ko">00 – 07분</span></div>
+            <h3><span lang="en">Data Awakening</span><span lang="ko">데이터 각성</span></h3>
+            <p lang="en">The record is revealed, and AI reads the original text, turning “simmer all day” into temperatures, grams and minutes.</p>
+            <p lang="ko">기록이 공개되고, AI가 원문을 읽어 “종일 끓인다”를 온도·그램·분으로 바꿉니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#d4a337">
+            <div class="num">02</div><div class="tm"><span lang="en">07 – 17 min</span><span lang="ko">07 – 17분</span></div>
+            <h3><span lang="en">Fact Clash</span><span lang="ko">팩트 공방</span></h3>
+            <p lang="en">A historian, a scientist and a critic unpack the dish's story, then argue over how to read the record, with live AI fact-checking.</p>
+            <p lang="ko">역사가·과학자·평론가가 요리의 배경을 풀고, AI 실시간 팩트체크와 함께 기록의 해석을 두고 맞붙습니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#e0566b">
+            <div class="num">03</div><div class="tm"><span lang="en">17 – 37 min</span><span lang="ko">17 – 37분</span></div>
+            <h3><span lang="en">Kitchen Under Fire</span><span lang="ko">키친 언더 파이어</span></h3>
+            <p lang="en">Team Tradition vs. Team Evolution. Shot on 4K high-speed cameras, with chefs' heart rates and cooking temperatures shown live on screen.</p>
+            <p lang="ko">전통팀 vs 진화팀. 4K 고속 카메라로 담고, 셰프의 심박수와 조리 온도를 화면에 실시간으로 띄웁니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#d4a337">
+            <div class="num">04</div><div class="tm"><span lang="en">37 – 45 min</span><span lang="ko">37 – 45분</span></div>
+            <h3><span lang="en">The Third Plate</span><span lang="ko">세 번째 접시</span></h3>
+            <p lang="en">Three unlabeled plates: two chefs' dishes and AI's interpretation. After a blind tasting, the winner is logged as a new recipe record.</p>
+            <p lang="ko">라벨 없는 세 접시 — 두 셰프의 요리와 AI의 해석. 블라인드 시식 후 ‘새 레시피 기록’으로 남깁니다.</p>
+          </div>
+        </div>
+
+        <div class="cot-facts reveal" lang="en">
+          <div><small>Format</small><b>10 × 45 min<br />Season 1 · 10 records</b></div>
+          <div><small>Research partner</small><b>KAIST Graduate School<br />of Culture Technology</b></div>
+          <div><small>Technology</small><b>Google Gemini<br />Upstage Document AI</b></div>
+          <div><small>ATF goals</small><b>Co-production · Pre-sales<br />Format licensing</b></div>
+        </div>
+        <div class="cot-facts reveal" lang="ko">
+          <div><small>포맷</small><b>45분 × 10부작<br />시즌 1 · 10개의 기록</b></div>
+          <div><small>연구 파트너</small><b>KAIST<br />문화기술대학원</b></div>
+          <div><small>기술</small><b>Google Gemini<br />Upstage Document AI</b></div>
+          <div><small>ATF 목표</small><b>공동제작 · 플랫폼 선판매<br />포맷 라이선싱</b></div>
+        </div>
+        <p class="cot-note" lang="en">Concept trailer · People and scenes shown are illustrative; casting is in progress.</p>
+        <p class="cot-note" lang="ko">컨셉 트레일러 · 영상 속 인물과 장면은 연출용 이미지이며, 출연진은 섭외 진행 중입니다.</p>
+      </div>
+    </section>
+
+    <!-- 유배일지: 1분 쇼케이스 + 3회 제주 대정 AI 재연 본편 -->
+    <section class="cot exile" id="exile" aria-labelledby="exile-title">
+      <div class="wrap">
+        <div class="cot-head reveal">
+          <div>
+            <span class="cot-tag"><span lang="en">KAIST CT × AI Selection · Trailer</span><span lang="ko">KAIST CT × AI 선정 · 트레일러</span></span>
+            <h2 class="cot-title" id="exile-title"><span lang="en">Yubae Ilji</span><span lang="ko">유배일지</span><small>The Chronicles of Exile</small></h2>
+            <p class="cot-lead" lang="en">Real records left by Joseon-era exiles become the rules. Two celebrities live in a place of exile under exactly those conditions, and they are released only if they hand in an “exile work” on the final day. A historical reality show. Watch the 1-minute showcase and the AI-recreated feature from Episode 3: Daejeong, Jeju, with Chusa Kim Jeong-hui.</p>
+            <p class="cot-lead" lang="ko">조선 유배인이 남긴 실제 기록이 규칙이 됩니다. 두 명의 셀럽이 그 조건 그대로 유배지에서 살고, 마지막 날 ‘유배 저작’을 내야 풀려나는 역사 리얼리티 예능. 1분 쇼케이스와 3회 제주 대정, 추사 김정희 편의 AI 재연 본편을 먼저 만나보세요.</p>
+          </div>
+          <div class="cot-badges">
+            <span lang="en">KAIST CT × AI Selection<small>2026 KOCCA × KAIST CT × AI Content Micro-degree</small></span>
+            <span lang="ko">KAIST CT × AI 선정<small>2026 KOCCA × KAIST CT × AI 콘텐츠 마이크로디그리</small></span>
+            <span lang="en">Historical reality show · In development<small>10 × 60 min · 9 exile sites + a release special</small></span>
+            <span lang="ko">역사 리얼리티 예능 · 기획 개발 중<small>60분 × 10부작 · 유배지 9곳 + 해배 특집</small></span>
+            <span lang="en">Fact layer + imagination layer<small>Sources as on-screen text, entertainment as missions</small></span>
+            <span lang="ko">사실 레이어 + 상상 레이어<small>사료는 원문 자막으로, 예능은 미션으로</small></span>
+          </div>
+        </div>
+
+        <div class="cot-player reveal">
+          <video class="cot-video" id="exile-video" controls playsinline preload="metadata"
+                 poster="assets/exile/poster.jpg"
+                 data-aria-en="The Chronicles of Exile trailer: 1-minute showcase and the AI-recreated feature from Episode 3, Daejeong, Jeju (2 min, subtitled)"
+                 data-aria-ko="유배일지 트레일러: 1분 쇼케이스와 3회 제주 대정 AI 재연 본편 (2분, 자막 포함)"
+                 aria-label="The Chronicles of Exile trailer: 1-minute showcase and the AI-recreated feature from Episode 3, Daejeong, Jeju (2 min, subtitled)">
+            <source src="assets/exile/trailer.mp4" type="video/mp4" />
+          </video>
+          <ol class="cot-chapters" data-aria-en="Trailer chapters" data-aria-ko="트레일러 구간 바로가기" aria-label="Trailer chapters">
+            <li><button type="button" data-t="0" style="--c:#a9b4ba"><img src="assets/exile/ch1.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">00:00 · OPENING</span><span class="n">Tech specs</span><span class="d">Director-Agent production pipeline</span></span><span lang="ko"><span class="t">00:00 · 오프닝</span><span class="n">유배일지 · 기술 사양</span><span class="d">Director-Agent 제작 파이프라인</span></span></button></li>
+            <li><button type="button" data-t="9" style="--c:#8fbccf"><img src="assets/exile/ch2.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">00:09 · MAKING-OF</span><span class="n">From storyboard to edit</span><span class="d">Shot design · generation · sound</span></span><span lang="ko"><span class="t">00:09 · 메이킹</span><span class="n">콘티 보드에서 편집까지</span><span class="d">샷 설계 · 생성 · 사운드</span></span></button></li>
+            <li><button type="button" data-t="18" style="--c:#e6c25a"><img src="assets/exile/ch3.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">00:18 · SOURCE</span><span class="n">A letter in Hangul to his wife</span><span class="d">Daejeong, Jeju, 1840 · Chusa Kim Jeong-hui</span></span><span lang="ko"><span class="t">00:18 · 사료</span><span class="n">아내에게 보낸 한글편지</span><span class="d">1840 제주 대정, 추사 김정희</span></span></button></li>
+            <li><button type="button" data-t="32" style="--c:#c8644a"><img src="assets/exile/ch4.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">00:32 · SHOWCASE</span><span class="n">2027: who are today's exiles?</span><span class="d">Spoiled rice cakes · haenyeo · village grandmothers</span></span><span lang="ko"><span class="t">00:32 · 쇼케이스</span><span class="n">2027년, 오늘의 유배인은?</span><span class="d">상한 인절미 · 해녀 · 마을 할머니들</span></span></button></li>
+            <li><button type="button" data-t="63.5" style="--c:#a9b4ba"><img src="assets/exile/ch5.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">01:03 · FEATURE · AI RECREATION</span><span class="n">Wiri Anchi</span><span class="d">A world no bigger than a thorn fence</span></span><span lang="ko"><span class="t">01:03 · 본편 AI 재연</span><span class="n">위리안치</span><span class="d">가시 울타리 안이 세상의 전부</span></span></button></li>
+            <li><button type="button" data-t="101.5" style="--c:#e6c25a"><img src="assets/exile/ch6.jpg" alt="" loading="lazy" /><span lang="en"><span class="t">01:41 · FEATURE · SOURCE</span><span class="n">“The rice cakes had all gone bad”</span><span class="d">Hangul letter, National Museum of Korea</span></span><span lang="ko"><span class="t">01:41 · 본편 사료</span><span class="n">“인절미는 다 상해 버렸다”</span><span class="d">국립중앙박물관 소장 한글편지</span></span></button></li>
+          </ol>
+        </div>
+
+        <div class="cot-format">
+          <div class="cot-step reveal" style="--c:#a9b4ba">
+            <div class="num">01</div><div class="tm"><span lang="en">00 – 05 min</span><span lang="ko">00 – 05분</span></div>
+            <h3><span lang="en">The Royal Decree</span><span lang="ko">교지 낭독</span></h3>
+            <p lang="en">An escort officer announces the sentence, lodging and prohibitions based on historical sources, and confiscates phones.</p>
+            <p lang="ko">압송관이 사료를 근거로 형벌·거처·금지 사항을 통보하고 휴대폰을 압수합니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#8fbccf">
+            <div class="num">02</div><div class="tm"><span lang="en">05 – 15 min</span><span lang="ko">05 – 15분</span></div>
+            <h3><span lang="en">The Journey</span><span lang="ko">압송과 도착</span></h3>
+            <p lang="en">By boat and on foot to the place of exile. The destination stays secret until the very end.</p>
+            <p lang="ko">배와 도보로 유배지까지. 행선지는 끝까지 알려주지 않습니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#c8644a">
+            <div class="num">03</div><div class="tm"><span lang="en">15 – 40 min</span><span lang="ko">15 – 40분</span></div>
+            <h3><span lang="en">Life in Exile</span><span lang="ko">적소 생활</span></h3>
+            <p lang="en">Living in the home of a real villager acting as host, they work for their meals and take on missions drawn from historical anecdotes.</p>
+            <p lang="ko">실제 마을 주민 ‘보수주인’의 집에서 노동하고 끼니를 해결하며, 사료 속 일화로 만든 미션을 수행합니다.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#e6c25a">
+            <div class="num">04</div><div class="tm"><span lang="en">40 – 48 min</span><span lang="ko">40 – 48분</span></div>
+            <h3><span lang="en">Letters</span><span lang="ko">편지</span></h3>
+            <p lang="en">The cast's real families send handwritten letters and parcels, and spoiled or odd items arrive just as they did in the records.</p>
+            <p lang="ko">출연자의 실제 가족이 손편지와 물품을 보내옵니다. 상하거나 엉뚱한 물건이 오는 것까지 기록 그대로.</p>
+          </div>
+          <div class="cot-step reveal" style="--c:#8fbccf">
+            <div class="num">05</div><div class="tm"><span lang="en">48 – 60 min</span><span lang="ko">48 – 60분</span></div>
+            <h3><span lang="en">The Work &amp; the Verdict</span><span lang="ko">저작과 해배 심사</span></h3>
+            <p lang="en">They submit an “exile work” such as a field guide, a taste map or a calligraphy album, and the escort officer rules on release or a longer exile.</p>
+            <p lang="ko">도감·맛 지도·서첩 같은 ‘유배 저작’을 제출하고, 압송관이 해배와 유배 연장을 판정합니다.</p>
+          </div>
+        </div>
+
+        <div class="cot-facts reveal" lang="en">
+          <div><small>Format</small><b>10 × 60 min<br />Gangjin · Heuksando · Jeju + more</b></div>
+          <div><small>Cast</small><b>2 exiles + 1 escort officer<br />A real villager host each episode</b></div>
+          <div><small>Technology</small><b>AI-recreated VCR · classical-text conversion<br />AI speaker-tracking fixed cams</b></div>
+          <div><small>Extensions</small><b>Companion book<br />Exile-route tours · Global format</b></div>
+        </div>
+        <div class="cot-facts reveal" lang="ko">
+          <div><small>포맷</small><b>60분 × 10부작<br />강진 · 흑산도 · 제주 외 9곳</b></div>
+          <div><small>출연</small><b>유배인 2 + 압송관 1<br />회차별 보수주인(실제 주민)</b></div>
+          <div><small>기술</small><b>AI 재연 VCR · 고문체 변환<br />AI 화자 인식 고정캠</b></div>
+          <div><small>확장</small><b>단행본 『유배일지』<br />유배길 투어 · 해외 포맷</b></div>
+        </div>
+        <p class="cot-note" lang="en">AI-recreation rough cut · Scenes marked [Source] are based on real records; people and scenes in the video are AI-generated illustrations.</p>
+        <p class="cot-note" lang="ko">AI 재연 러프컷 · [사료] 표기 장면은 실제 기록에 근거하며, 영상 속 인물과 장면은 AI로 생성한 연출 이미지입니다.</p>
+      </div>
+    </section>
+
+    <!-- Hero -->
     <section class="hero">
       <div class="wrap">
-        <span class="badge">방송국 · 넷플릭스가 신뢰하는 제작 파트너</span>
-        <h1>
+        <span class="badge"><span lang="en">The production partner Korean broadcasters and Netflix trust</span><span lang="ko">방송국 · 넷플릭스가 신뢰하는 제작 파트너</span></span>
+        <h1 lang="en">From concept to delivery,<br /><span class="hl">clean video</span> at a fair price.</h1>
+        <h1 lang="ko">
           기획부터 완성까지,<br />
           <span class="hl">깔끔한 영상</span>을 합리적인 비용으로.
         </h1>
-        <p class="lead">
+        <p class="lead" lang="en">
+          Hi, I'm <strong>Hansung Lee</strong>, founder of Studio78.
+          From entertainment shows to AI video production and AI video platforms,
+          I deliver clean, no-frills work that fits your budget.
+        </p>
+        <p class="lead" lang="ko">
           안녕하세요, 스튜디오78 대표 <strong>이한성</strong>입니다.
           예능 프로그램 제작과 AI 영상 제작, 그리고 AI 영상 제작 플랫폼까지 —
           군더더기 없이 깔끔한 결과물을 예산에 맞춰 만들어 드립니다.
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">프로젝트 문의하기 →</a>
-          <a href="#work" class="btn btn-ghost">작업 사례 보기</a>
+          <a href="#contact" class="btn btn-primary"><span lang="en">Start a project →</span><span lang="ko">프로젝트 문의하기 →</span></a>
+          <a href="#work" class="btn btn-ghost"><span lang="en">See our work</span><span lang="ko">작업 사례 보기</span></a>
         </div>
         <div class="hero-clients">
-          <span>함께한 채널·플랫폼</span>
-          <strong>SBS</strong><strong>JTBC</strong><strong>TV조선</strong><strong>Netflix</strong>
+          <span><span lang="en">Channels &amp; platforms we've worked with</span><span lang="ko">함께한 채널·플랫폼</span></span>
+          <strong>SBS</strong><strong>JTBC</strong><strong>TV Chosun</strong><strong>Netflix</strong>
         </div>
       </div>
     </section>
@@ -515,16 +712,29 @@
       <div class="wrap">
         <div class="spotlight reveal">
           <div>
-            <span class="sp-badge">🏆 KCA 2026 해외진출형 방송콘텐츠 기획개발 지원사업 선정</span>
-            <h2>미식실록 — 다시 쓰는 맛</h2>
-            <div class="sp-sub">Chronicles of Taste · Taste, Rewritten by AI</div>
-            <p class="sp-desc">
+            <span class="sp-badge"><span lang="en">🏆 Selected for KCA 2026 Global Broadcast Content Development Grant</span><span lang="ko">🏆 KCA 2026 해외진출형 방송콘텐츠 기획개발 지원사업 선정</span></span>
+            <h2><span lang="en">Chronicles of Taste</span><span lang="ko">미식실록 — 다시 쓰는 맛</span></h2>
+            <div class="sp-sub"><span lang="en">Misik Sillok · Taste, Rewritten by AI</span><span lang="ko">Chronicles of Taste · Taste, Rewritten by AI</span></div>
+            <p class="sp-desc" lang="en">
+              An entertainment series that uses AI to restore recipes lost in historical records. Vague lines
+              from old texts become data recipes measured in degrees, grams and minutes, and Team Tradition,
+              Team Evolution and AI's interpretation face off in a blind tasting.
+              <br />(Pitched at Busan Contents Market BCM 2026 · Selected for the ATF 2026 Showcase)
+            </p>
+            <p class="sp-desc" lang="ko">
               역사 기록 속 사라진 레시피를 AI로 복원하는 엔터테인먼트 시리즈. 고문헌의 모호한 문장을
               온도·그램·분 단위의 데이터 레시피로 되살리고, 전통팀과 진화팀 셰프, 그리고 AI의 해석이
               블라인드 시식으로 맞붙습니다.
               <br />(부산콘텐츠마켓 BCM 2026 피칭 · ATF 2026 쇼케이스 선정)
             </p>
-            <div class="sp-chips">
+            <div class="sp-chips" lang="en">
+              <span>AI edutainment</span>
+              <span>10 × 45 min</span>
+              <span>Google Gemini · Upstage</span>
+              <span>KAIST research partner</span>
+              <span>Built as a global format</span>
+            </div>
+            <div class="sp-chips" lang="ko">
               <span>AI 에듀테인먼트</span>
               <span>45분 × 10부작</span>
               <span>Google Gemini · Upstage</span>
@@ -532,7 +742,13 @@
               <span>글로벌 포맷 지향</span>
             </div>
           </div>
-          <div class="sp-stats">
+          <div class="sp-stats" lang="en">
+            <div class="sp-stat"><b>10 episodes</b><small>45 minutes each</small></div>
+            <div class="sp-stat"><b>500 years</b><small>of recorded recipes restored</small></div>
+            <div class="sp-stat"><b>3 plates</b><small>Tradition · Evolution · AI</small></div>
+            <div class="sp-stat"><b>Global</b><small>Co-production · Pre-sales · Format licensing</small></div>
+          </div>
+          <div class="sp-stats" lang="ko">
             <div class="sp-stat"><b>10부작</b><small>회당 45분 시리즈</small></div>
             <div class="sp-stat"><b>500년</b><small>기록 속 레시피 복원</small></div>
             <div class="sp-stat"><b>3개의 접시</b><small>전통팀 · 진화팀 · AI</small></div>
@@ -542,158 +758,34 @@
       </div>
     </section>
 
-    <!-- Chronicles of Taste: ATF 2026 쇼케이스 트레일러 -->
-    <section class="cot" id="trailer" aria-labelledby="cot-title">
-      <div class="wrap">
-        <div class="cot-head reveal">
-          <div>
-            <span class="cot-tag">ATF 2026 Showcase · Concept Trailer</span>
-            <h2 class="cot-title" id="cot-title">Chronicles <i>of</i> Taste</h2>
-            <p class="cot-lead">미식실록의 영문 글로벌 버전. 500년 전 기록 속 레시피를 AI로 되살리는 포맷을 3분 트레일러로 먼저 만나보세요.</p>
-          </div>
-          <div class="cot-badges">
-            <span>ATF 2026 쇼케이스 트랙 선정<small>싱가포르 · 12월 1–4일</small></span>
-            <span>KCA 2026 해외진출형 기획개발 지원사업 선정<small>45분 × 10부작 AI 에듀테인먼트</small></span>
-          </div>
-        </div>
-
-        <div class="cot-player reveal">
-          <video class="cot-video" id="cot-video" controls playsinline preload="metadata"
-                 poster="assets/chronicles/poster.jpg"
-                 aria-label="Chronicles of Taste 컨셉 트레일러 (3분, 영어)">
-            <source src="assets/chronicles/trailer.mp4" type="video/mp4" />
-          </video>
-          <ol class="cot-chapters" aria-label="트레일러 구간 바로가기">
-            <li><button type="button" data-t="0" style="--c:#b9b4aa"><img src="assets/chronicles/ch1.jpg" alt="" loading="lazy" /><span><span class="t">00:00 · 오프닝</span><span class="n">Ep 1 효종갱</span><span class="d">조선의 첫 배달음식</span></span></button></li>
-            <li><button type="button" data-t="24" style="--c:#2ab3a6"><img src="assets/chronicles/ch2.jpg" alt="" loading="lazy" /><span><span class="t">00:24 · STEP 01</span><span class="n">데이터 각성</span><span class="d">“종일 끓인다” → 92°C · 11시간</span></span></button></li>
-            <li><button type="button" data-t="48" style="--c:#d4a337"><img src="assets/chronicles/ch3.jpg" alt="" loading="lazy" /><span><span class="t">00:48 · STEP 02</span><span class="n">팩트 공방</span><span class="d">네 명의 전문가, 한 그릇</span></span></button></li>
-            <li><button type="button" data-t="90" style="--c:#e0566b"><img src="assets/chronicles/ch4.jpg" alt="" loading="lazy" /><span><span class="t">01:30 · STEP 03</span><span class="n">키친 언더 파이어</span><span class="d">전통팀 vs 진화팀</span></span></button></li>
-            <li><button type="button" data-t="150" style="--c:#d4a337"><img src="assets/chronicles/ch5.jpg" alt="" loading="lazy" /><span><span class="t">02:30 · STEP 04</span><span class="n">세 번째 접시</span><span class="d">셰프의 손맛 vs AI의 데이터</span></span></button></li>
-          </ol>
-        </div>
-
-        <div class="cot-format">
-          <div class="cot-step reveal" style="--c:#2ab3a6">
-            <div class="num">01</div><div class="tm">00 – 07분</div>
-            <h3>데이터 각성</h3>
-            <p>기록이 공개되고, AI가 원문을 읽어 “종일 끓인다”를 온도·그램·분으로 바꿉니다.</p>
-          </div>
-          <div class="cot-step reveal" style="--c:#d4a337">
-            <div class="num">02</div><div class="tm">07 – 17분</div>
-            <h3>팩트 공방</h3>
-            <p>역사가·과학자·평론가가 요리의 배경을 풀고, AI 실시간 팩트체크와 함께 기록의 해석을 두고 맞붙습니다.</p>
-          </div>
-          <div class="cot-step reveal" style="--c:#e0566b">
-            <div class="num">03</div><div class="tm">17 – 37분</div>
-            <h3>키친 언더 파이어</h3>
-            <p>전통팀 vs 진화팀. 4K 고속 카메라로 담고, 셰프의 심박수와 조리 온도를 화면에 실시간으로 띄웁니다.</p>
-          </div>
-          <div class="cot-step reveal" style="--c:#d4a337">
-            <div class="num">04</div><div class="tm">37 – 45분</div>
-            <h3>세 번째 접시</h3>
-            <p>라벨 없는 세 접시 — 두 셰프의 요리와 AI의 해석. 블라인드 시식 후 ‘새 레시피 기록’으로 남깁니다.</p>
-          </div>
-        </div>
-
-        <div class="cot-facts reveal">
-          <div><small>포맷</small><b>45분 × 10부작<br />시즌 1 · 10개의 기록</b></div>
-          <div><small>연구 파트너</small><b>KAIST<br />문화기술대학원</b></div>
-          <div><small>기술</small><b>Google Gemini<br />Upstage Document AI</b></div>
-          <div><small>ATF 목표</small><b>공동제작 · 플랫폼 선판매<br />포맷 라이선싱</b></div>
-        </div>
-        <p class="cot-note">컨셉 트레일러 · 영상 속 인물과 장면은 연출용 이미지이며, 출연진은 섭외 진행 중입니다.</p>
-      </div>
-    </section>
-
-    <!-- 유배일지: 1분 쇼케이스 + 3회 제주 대정 AI 재연 본편 -->
-    <section class="cot exile" id="exile" aria-labelledby="exile-title">
-      <div class="wrap">
-        <div class="cot-head reveal">
-          <div>
-            <span class="cot-tag">KAIST CT × AI 선정 · 트레일러</span>
-            <h2 class="cot-title" id="exile-title">유배일지<small>The Chronicles of Exile</small></h2>
-            <p class="cot-lead">조선 유배인이 남긴 실제 기록이 규칙이 됩니다. 두 명의 셀럽이 그 조건 그대로 유배지에서 살고, 마지막 날 ‘유배 저작’을 내야 풀려나는 역사 리얼리티 예능. 1분 쇼케이스와 3회 제주 대정, 추사 김정희 편의 AI 재연 본편을 먼저 만나보세요.</p>
-          </div>
-          <div class="cot-badges">
-            <span>KAIST CT × AI 선정<small>2026 KOCCA × KAIST CT × AI 콘텐츠 마이크로디그리</small></span>
-            <span>역사 리얼리티 예능 · 기획 개발 중<small>60분 × 10부작 · 유배지 9곳 + 해배 특집</small></span>
-            <span>사실 레이어 + 상상 레이어<small>사료는 원문 자막으로, 예능은 미션으로</small></span>
-          </div>
-        </div>
-
-        <div class="cot-player reveal">
-          <video class="cot-video" id="exile-video" controls playsinline preload="metadata"
-                 poster="assets/exile/poster.jpg"
-                 aria-label="유배일지 트레일러: 1분 쇼케이스와 3회 제주 대정 AI 재연 본편 (2분, 자막 포함)">
-            <source src="assets/exile/trailer.mp4" type="video/mp4" />
-          </video>
-          <ol class="cot-chapters" aria-label="트레일러 구간 바로가기">
-            <li><button type="button" data-t="0" style="--c:#a9b4ba"><img src="assets/exile/ch1.jpg" alt="" loading="lazy" /><span><span class="t">00:00 · 오프닝</span><span class="n">유배일지 · 기술 사양</span><span class="d">Director-Agent 제작 파이프라인</span></span></button></li>
-            <li><button type="button" data-t="9" style="--c:#8fbccf"><img src="assets/exile/ch2.jpg" alt="" loading="lazy" /><span><span class="t">00:09 · 메이킹</span><span class="n">콘티 보드에서 편집까지</span><span class="d">샷 설계 · 생성 · 사운드</span></span></button></li>
-            <li><button type="button" data-t="18" style="--c:#e6c25a"><img src="assets/exile/ch3.jpg" alt="" loading="lazy" /><span><span class="t">00:18 · 사료</span><span class="n">아내에게 보낸 한글편지</span><span class="d">1840 제주 대정, 추사 김정희</span></span></button></li>
-            <li><button type="button" data-t="32" style="--c:#c8644a"><img src="assets/exile/ch4.jpg" alt="" loading="lazy" /><span><span class="t">00:32 · 쇼케이스</span><span class="n">2027년, 오늘의 유배인은?</span><span class="d">상한 인절미 · 해녀 · 마을 할머니들</span></span></button></li>
-            <li><button type="button" data-t="63.5" style="--c:#a9b4ba"><img src="assets/exile/ch5.jpg" alt="" loading="lazy" /><span><span class="t">01:03 · 본편 AI 재연</span><span class="n">위리안치</span><span class="d">가시 울타리 안이 세상의 전부</span></span></button></li>
-            <li><button type="button" data-t="101.5" style="--c:#e6c25a"><img src="assets/exile/ch6.jpg" alt="" loading="lazy" /><span><span class="t">01:41 · 본편 사료</span><span class="n">“인절미는 다 상해 버렸다”</span><span class="d">국립중앙박물관 소장 한글편지</span></span></button></li>
-          </ol>
-        </div>
-
-        <div class="cot-format">
-          <div class="cot-step reveal" style="--c:#a9b4ba">
-            <div class="num">01</div><div class="tm">00 – 05분</div>
-            <h3>교지 낭독</h3>
-            <p>압송관이 사료를 근거로 형벌·거처·금지 사항을 통보하고 휴대폰을 압수합니다.</p>
-          </div>
-          <div class="cot-step reveal" style="--c:#8fbccf">
-            <div class="num">02</div><div class="tm">05 – 15분</div>
-            <h3>압송과 도착</h3>
-            <p>배와 도보로 유배지까지. 행선지는 끝까지 알려주지 않습니다.</p>
-          </div>
-          <div class="cot-step reveal" style="--c:#c8644a">
-            <div class="num">03</div><div class="tm">15 – 40분</div>
-            <h3>적소 생활</h3>
-            <p>실제 마을 주민 ‘보수주인’의 집에서 노동하고 끼니를 해결하며, 사료 속 일화로 만든 미션을 수행합니다.</p>
-          </div>
-          <div class="cot-step reveal" style="--c:#e6c25a">
-            <div class="num">04</div><div class="tm">40 – 48분</div>
-            <h3>편지</h3>
-            <p>출연자의 실제 가족이 손편지와 물품을 보내옵니다. 상하거나 엉뚱한 물건이 오는 것까지 기록 그대로.</p>
-          </div>
-          <div class="cot-step reveal" style="--c:#8fbccf">
-            <div class="num">05</div><div class="tm">48 – 60분</div>
-            <h3>저작과 해배 심사</h3>
-            <p>도감·맛 지도·서첩 같은 ‘유배 저작’을 제출하고, 압송관이 해배와 유배 연장을 판정합니다.</p>
-          </div>
-        </div>
-
-        <div class="cot-facts reveal">
-          <div><small>포맷</small><b>60분 × 10부작<br />강진 · 흑산도 · 제주 외 9곳</b></div>
-          <div><small>출연</small><b>유배인 2 + 압송관 1<br />회차별 보수주인(실제 주민)</b></div>
-          <div><small>기술</small><b>AI 재연 VCR · 고문체 변환<br />AI 화자 인식 고정캠</b></div>
-          <div><small>확장</small><b>단행본 『유배일지』<br />유배길 투어 · 해외 포맷</b></div>
-        </div>
-        <p class="cot-note">AI 재연 러프컷 · [사료] 표기 장면은 실제 기록에 근거하며, 영상 속 인물과 장면은 AI로 생성한 연출 이미지입니다.</p>
-      </div>
-    </section>
-
     <!-- Strengths -->
     <section class="block">
       <div class="wrap">
         <div class="sec-head reveal">
-          <span class="sec-tag">Why 스튜디오78</span>
-          <h2>왜 스튜디오78과 함께할까요?</h2>
-          <p>제작사의 경험과 AI 기술을 함께 활용해, 더 빠르고 더 합리적으로 완성합니다.</p>
+          <span class="sec-tag">Why Studio78</span>
+          <h2><span lang="en">Why work with Studio78?</span><span lang="ko">왜 스튜디오78과 함께할까요?</span></h2>
+          <p lang="en">We combine production-house experience with AI to deliver faster and more affordably.</p>
+          <p lang="ko">제작사의 경험과 AI 기술을 함께 활용해, 더 빠르고 더 합리적으로 완성합니다.</p>
         </div>
         <div class="strengths">
           <div class="strength reveal">
             <div class="ic" aria-hidden="true">✦</div>
-            <div>
+            <div lang="en">
+              <h3>Clean, no-frills production</h3>
+              <p>Polished programs that keep only what matters. Production know-how proven on set delivers work that lands with viewers right away.</p>
+            </div>
+            <div lang="ko">
               <h3>군더더기 없는 깔끔한 제작</h3>
               <p>핵심만 담은 완성도 높은 프로그램. 방송 현장에서 검증된 제작 노하우로 시청자에게 바로 통하는 결과물을 만듭니다.</p>
             </div>
           </div>
           <div class="strength reveal">
             <div class="ic" aria-hidden="true">₩</div>
-            <div>
+            <div lang="en">
+              <h3>Fair pricing that fits your budget</h3>
+              <p>We design the best possible quality within your budget. Transparent quotes that skip unnecessary costs and focus spending where it counts.</p>
+            </div>
+            <div lang="ko">
               <h3>예산에 맞춘 합리적 비용</h3>
               <p>정해진 예산 안에서 최선의 퀄리티를 설계합니다. 불필요한 비용 없이, 필요한 곳에 집중하는 투명한 견적을 드립니다.</p>
             </div>
@@ -707,39 +799,73 @@
       <div class="wrap">
         <div class="sec-head reveal">
           <span class="sec-tag">Services</span>
-          <h2>제공하는 서비스</h2>
-          <p>방송 프로그램 제작과 AI 영상 제작, 두 축으로 프로젝트를 완성합니다.</p>
+          <h2><span lang="en">What we do</span><span lang="ko">제공하는 서비스</span></h2>
+          <p lang="en">Broadcast production and AI video production: two pillars that carry every project to completion.</p>
+          <p lang="ko">방송 프로그램 제작과 AI 영상 제작, 두 축으로 프로젝트를 완성합니다.</p>
         </div>
         <div class="cards">
           <div class="card reveal">
             <span class="emoji" aria-hidden="true">🎬</span>
-            <h3>방송 프로그램 제작</h3>
-            <p>예능·교양 프로그램의 기획부터 촬영, 편집까지 전 과정을 책임집니다.</p>
-            <ul>
-              <li>예능 프로그램 기획·제작</li>
-              <li>방송국·플랫폼 납품 규격 대응</li>
-              <li>기획 · 촬영 · 편집 원스톱</li>
-            </ul>
+            <div lang="en">
+              <h3>Broadcast production</h3>
+              <p>We own the whole process for entertainment and factual shows, from development to shooting and editing.</p>
+              <ul>
+                <li>Entertainment show development &amp; production</li>
+                <li>Broadcaster &amp; platform delivery specs</li>
+                <li>One-stop: concept · shoot · edit</li>
+              </ul>
+            </div>
+            <div lang="ko">
+              <h3>방송 프로그램 제작</h3>
+              <p>예능·교양 프로그램의 기획부터 촬영, 편집까지 전 과정을 책임집니다.</p>
+              <ul>
+                <li>예능 프로그램 기획·제작</li>
+                <li>방송국·플랫폼 납품 규격 대응</li>
+                <li>기획 · 촬영 · 편집 원스톱</li>
+              </ul>
+            </div>
           </div>
           <div class="card reveal">
             <span class="emoji" aria-hidden="true">🤖</span>
-            <h3>AI 영상 제작</h3>
-            <p>AI 도구를 활용해 빠르고 효율적으로 고품질 영상을 제작합니다.</p>
-            <ul>
-              <li>AI 기반 영상 콘텐츠 제작</li>
-              <li>홍보·브랜드 영상</li>
-              <li>빠른 제작 주기, 합리적 비용</li>
-            </ul>
+            <div lang="en">
+              <h3>AI video production</h3>
+              <p>We use AI tools to produce high-quality video quickly and efficiently.</p>
+              <ul>
+                <li>AI-powered video content</li>
+                <li>Promotional &amp; brand films</li>
+                <li>Fast turnaround, fair cost</li>
+              </ul>
+            </div>
+            <div lang="ko">
+              <h3>AI 영상 제작</h3>
+              <p>AI 도구를 활용해 빠르고 효율적으로 고품질 영상을 제작합니다.</p>
+              <ul>
+                <li>AI 기반 영상 콘텐츠 제작</li>
+                <li>홍보·브랜드 영상</li>
+                <li>빠른 제작 주기, 합리적 비용</li>
+              </ul>
+            </div>
           </div>
           <div class="card reveal">
             <span class="emoji" aria-hidden="true">🛠️</span>
-            <h3>AI 영상 제작 플랫폼</h3>
-            <p>영상 제작을 더 쉽게 만드는 AI 플랫폼을 직접 기획·제작합니다.</p>
-            <ul>
-              <li>AI 영상 제작 워크플로우 설계</li>
-              <li>제작 자동화 솔루션</li>
-              <li>플랫폼 기획 · 개발</li>
-            </ul>
+            <div lang="en">
+              <h3>AI video platform</h3>
+              <p>We plan and build our own AI platform that makes video production easier.</p>
+              <ul>
+                <li>AI video workflow design</li>
+                <li>Production automation</li>
+                <li>Platform planning &amp; development</li>
+              </ul>
+            </div>
+            <div lang="ko">
+              <h3>AI 영상 제작 플랫폼</h3>
+              <p>영상 제작을 더 쉽게 만드는 AI 플랫폼을 직접 기획·제작합니다.</p>
+              <ul>
+                <li>AI 영상 제작 워크플로우 설계</li>
+                <li>제작 자동화 솔루션</li>
+                <li>플랫폼 기획 · 개발</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -750,25 +876,30 @@
       <div class="wrap">
         <div class="sec-head reveal">
           <span class="sec-tag">Process</span>
-          <h2>이렇게 진행합니다</h2>
-          <p>문의부터 납품까지, 단계마다 투명하게 소통하며 진행합니다.</p>
+          <h2><span lang="en">How we work</span><span lang="ko">이렇게 진행합니다</span></h2>
+          <p lang="en">From first inquiry to delivery, we keep you in the loop at every step.</p>
+          <p lang="ko">문의부터 납품까지, 단계마다 투명하게 소통하며 진행합니다.</p>
         </div>
         <div class="steps">
           <div class="step reveal">
-            <h3>문의 · 상담</h3>
-            <p>목표와 예산, 일정을 듣고 프로젝트 방향을 함께 잡습니다.</p>
+            <h3><span lang="en">Inquiry &amp; consultation</span><span lang="ko">문의 · 상담</span></h3>
+            <p lang="en">We hear your goals, budget and timeline, and set the project's direction together.</p>
+            <p lang="ko">목표와 예산, 일정을 듣고 프로젝트 방향을 함께 잡습니다.</p>
           </div>
           <div class="step reveal">
-            <h3>기획 · 견적</h3>
-            <p>콘셉트와 진행 일정, 투명한 견적을 정리해 제안드립니다.</p>
+            <h3><span lang="en">Planning &amp; quote</span><span lang="ko">기획 · 견적</span></h3>
+            <p lang="en">We propose a concept, a schedule and a transparent quote.</p>
+            <p lang="ko">콘셉트와 진행 일정, 투명한 견적을 정리해 제안드립니다.</p>
           </div>
           <div class="step reveal">
-            <h3>제작</h3>
-            <p>촬영·편집 또는 AI 제작으로 결과물을 완성해 나갑니다.</p>
+            <h3><span lang="en">Production</span><span lang="ko">제작</span></h3>
+            <p lang="en">We build the result through shooting and editing, or AI production.</p>
+            <p lang="ko">촬영·편집 또는 AI 제작으로 결과물을 완성해 나갑니다.</p>
           </div>
           <div class="step reveal">
-            <h3>납품 · 피드백</h3>
-            <p>납품 규격에 맞춰 전달하고, 수정 요청을 반영합니다.</p>
+            <h3><span lang="en">Delivery &amp; feedback</span><span lang="ko">납품 · 피드백</span></h3>
+            <p lang="en">We deliver to spec and incorporate your revision requests.</p>
+            <p lang="ko">납품 규격에 맞춰 전달하고, 수정 요청을 반영합니다.</p>
           </div>
         </div>
       </div>
@@ -779,31 +910,59 @@
       <div class="wrap">
         <div class="sec-head reveal">
           <span class="sec-tag">Selected Work</span>
-          <h2>대표 작업 사례</h2>
-          <p>주요 방송사와 함께 제작한 프로그램들입니다.</p>
+          <h2><span lang="en">Selected work</span><span lang="ko">대표 작업 사례</span></h2>
+          <p lang="en">Shows we've produced with major Korean broadcasters.</p>
+          <p lang="ko">주요 방송사와 함께 제작한 프로그램들입니다.</p>
         </div>
         <div class="work-grid">
-          <a class="work reveal" href="https://programs.sbs.co.kr/life/eatout/about/58369" target="_blank" rel="noopener" aria-label="외식하는 날 — SBS미디어 예능 프로그램, 공식 페이지 새 창">
+          <a class="work reveal" href="https://programs.sbs.co.kr/life/eatout/about/58369" target="_blank" rel="noopener"
+             data-aria-en="Eating Out Day — SBS Media entertainment show, official page (opens in new tab)"
+             data-aria-ko="외식하는 날 — SBS미디어 예능 프로그램, 공식 페이지 새 창"
+             aria-label="Eating Out Day — SBS Media entertainment show, official page (opens in new tab)">
             <div class="thumb" aria-hidden="true">🍽️</div>
-            <div class="meta">
+            <div class="meta" lang="en">
+              <span class="ch">SBS Media</span>
+              <h3>Eating Out Day</h3>
+              <p>An entertainment show produced with SBS Media.</p>
+              <span class="go">View official page →</span>
+            </div>
+            <div class="meta" lang="ko">
               <span class="ch">SBS미디어</span>
               <h3>외식하는 날</h3>
               <p>SBS미디어와 함께 제작한 예능 프로그램.</p>
               <span class="go">공식 페이지 보기 →</span>
             </div>
           </a>
-          <a class="work reveal" href="https://search.naver.com/search.naver?query=JTBC+오늘부터+파티시에" target="_blank" rel="noopener" aria-label="오늘부터 파티시에 — JTBC 예능 프로그램, 프로그램 정보 새 창">
+          <a class="work reveal" href="https://search.naver.com/search.naver?query=JTBC+오늘부터+파티시에" target="_blank" rel="noopener"
+             data-aria-en="Pâtissier from Today — JTBC entertainment show, program info (opens in new tab)"
+             data-aria-ko="오늘부터 파티시에 — JTBC 예능 프로그램, 프로그램 정보 새 창"
+             aria-label="Pâtissier from Today — JTBC entertainment show, program info (opens in new tab)">
             <div class="thumb" aria-hidden="true">🧁</div>
-            <div class="meta">
+            <div class="meta" lang="en">
+              <span class="ch">JTBC</span>
+              <h3>Pâtissier from Today</h3>
+              <p>An entertainment show produced with JTBC.</p>
+              <span class="go">View program info →</span>
+            </div>
+            <div class="meta" lang="ko">
               <span class="ch">JTBC</span>
               <h3>오늘부터 파티시에</h3>
               <p>JTBC와 함께 제작한 예능 프로그램.</p>
               <span class="go">프로그램 정보 보기 →</span>
             </div>
           </a>
-          <a class="work reveal" href="https://tv.apple.com/kr/show/밥친구/umc.cmc.3eh9x6h6ogjbf530ztjo5r9eg" target="_blank" rel="noopener" aria-label="밥친구 — TV조선 예능 프로그램, 공식 페이지 새 창">
+          <a class="work reveal" href="https://tv.apple.com/kr/show/밥친구/umc.cmc.3eh9x6h6ogjbf530ztjo5r9eg" target="_blank" rel="noopener"
+             data-aria-en="Meal Buddy — TV Chosun entertainment show, official page (opens in new tab)"
+             data-aria-ko="밥친구 — TV조선 예능 프로그램, 공식 페이지 새 창"
+             aria-label="Meal Buddy — TV Chosun entertainment show, official page (opens in new tab)">
             <div class="thumb" aria-hidden="true">🍚</div>
-            <div class="meta">
+            <div class="meta" lang="en">
+              <span class="ch">TV Chosun</span>
+              <h3>Meal Buddy</h3>
+              <p>An entertainment show produced with TV Chosun.</p>
+              <span class="go">View official page →</span>
+            </div>
+            <div class="meta" lang="ko">
               <span class="ch">TV조선</span>
               <h3>밥친구</h3>
               <p>TV조선과 함께 제작한 예능 프로그램.</p>
@@ -818,10 +977,13 @@
     <section class="block" id="contact">
       <div class="wrap">
         <div class="contact-box reveal">
-          <h2>프로젝트를 함께 만들어 볼까요?</h2>
-          <p>예능 프로그램이든 AI 영상이든, 예산과 목표를 알려주시면 가장 합리적인 방법을 제안해 드립니다.</p>
+          <h2><span lang="en">Shall we make something together?</span><span lang="ko">프로젝트를 함께 만들어 볼까요?</span></h2>
+          <p lang="en">Whether it's an entertainment show or an AI video, tell us your budget and goals and we'll propose the most sensible way to get there.</p>
+          <p lang="ko">예능 프로그램이든 AI 영상이든, 예산과 목표를 알려주시면 가장 합리적인 방법을 제안해 드립니다.</p>
           <div class="contact-actions">
-            <a href="mailto:hansungyi@naver.com?subject=%5B%EC%8A%A4%ED%8A%B0%EB%94%9478%5D%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AC%B8%EC%9D%98" class="btn btn-white">✉️ 이메일로 문의하기</a>
+            <a href="mailto:hansungyi@naver.com?subject=%5BStudio78%5D%20Project%20inquiry" class="btn btn-white" id="mailCta"
+               data-href-en="mailto:hansungyi@naver.com?subject=%5BStudio78%5D%20Project%20inquiry"
+               data-href-ko="mailto:hansungyi@naver.com?subject=%5B%EC%8A%A4%ED%8A%B0%EB%94%9478%5D%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AC%B8%EC%9D%98"><span lang="en">✉️ Email us</span><span lang="ko">✉️ 이메일로 문의하기</span></a>
             <a href="https://instagram.com/hansunglee2025" target="_blank" rel="noopener" class="btn btn-outline-white">📷 @hansunglee2025</a>
           </div>
         </div>
@@ -832,7 +994,7 @@
   <!-- Footer -->
   <footer>
     <div class="wrap foot">
-      <div>© 2026 스튜디오78 · 이한성 대표</div>
+      <div><span lang="en">© 2026 Studio78 · Hansung Lee, Founder</span><span lang="ko">© 2026 스튜디오78 · 이한성 대표</span></div>
       <div>
         <a href="mailto:hansungyi@naver.com">hansungyi@naver.com</a>
         &nbsp;·&nbsp;
@@ -842,6 +1004,37 @@
   </footer>
 
   <script>
+    // 언어 토글 (기본 EN). 텍스트는 CSS가 html[lang]로 전환, 속성·제목은 여기서 전환
+    (function () {
+      var d = document.documentElement;
+      var btn = document.getElementById('langToggle');
+      var titles = {
+        en: 'Studio78 | Hansung Lee · Broadcast & AI Video Production',
+        ko: '스튜디오78 | 이한성 대표 · 방송 & AI 영상 제작'
+      };
+      var descs = {
+        en: document.querySelector('meta[name="description"]').getAttribute('content'),
+        ko: "스튜디오78 이한성 PD - 예능 프로그램과 AI 영상 제작. KCA 2026 선정·ATF 2026 쇼케이스작 '미식실록(Chronicles of Taste)' 등, 방송국과 넷플릭스가 신뢰하는 제작 파트너."
+      };
+      function apply(lang) {
+        d.setAttribute('lang', lang);
+        document.title = titles[lang];
+        document.querySelector('meta[name="description"]').setAttribute('content', descs[lang]);
+        Array.prototype.forEach.call(document.querySelectorAll('[data-aria-' + lang + ']'), function (el) {
+          el.setAttribute('aria-label', el.getAttribute('data-aria-' + lang));
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('[data-href-' + lang + ']'), function (el) {
+          el.setAttribute('href', el.getAttribute('data-href-' + lang));
+        });
+      }
+      apply(d.getAttribute('lang') === 'ko' ? 'ko' : 'en');
+      if (btn) btn.addEventListener('click', function () {
+        var next = d.getAttribute('lang') === 'ko' ? 'en' : 'ko';
+        apply(next);
+        try { localStorage.setItem('s78-lang', next); } catch (e) {}
+      });
+    })();
+
     // 테마 토글
     (function () {
       var btn = document.getElementById('themeToggle');
